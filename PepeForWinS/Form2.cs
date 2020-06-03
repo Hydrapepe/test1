@@ -34,7 +34,7 @@ namespace PepeForWinS
             /*Добавление в автозапуск*/
              AddAutostart();
             /*Запуск первого скрипта*/
-                Process.Start("script1.bat");
+            //Process.Start("script1.bat");
         }
         public void AddAutostart()
         {
