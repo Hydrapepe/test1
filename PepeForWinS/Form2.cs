@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace PepeForWinS
 {
@@ -21,8 +23,25 @@ namespace PepeForWinS
         public void Button1_Click(object sender, EventArgs e)
         { 
             HOLLY_TERRA();
+             using (FileStream fs5 = File.Create("text.txt"))
+                {
+                    string info = "";
+                    using (var sr = new StreamWriter(fs5))
+                    {
+                        sr.Write(info);
+                    }
+                }
+            /*Добавление в автозапуск*/
+             AddAutostart();
+            /*Запуск первого скрипта*/
+                Process.Start("script1.bat");
         }
-
+        public void AddAutostart()
+        {
+            string progName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            string run = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run";
+            Registry.SetValue(run,"Prog", progName);
+        }
         public string IP_SERVER,MASK, GATEWAY, HOSTNAME,NETWORK, LASTBYTE,DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NAME_USER,PASSWORD;
         private void Button2_Click(object sender, EventArgs e)
         {
