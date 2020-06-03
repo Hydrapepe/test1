@@ -78,7 +78,7 @@ namespace PepeForWinS
             Application.Exit();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             Form11 fr11 = new Form11();
             this.Hide();
