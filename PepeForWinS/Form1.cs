@@ -27,6 +27,7 @@ namespace PepeForWinS
                 File.Delete("text.txt");
                 File.Delete("textsuka.txt");
                 File.Delete("textsuka2.txt");
+                /*Удаление из автозапуска*/
                 string progName = "";
                 string run = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run";
                 Registry.SetValue(run, "Prog", progName);
@@ -37,7 +38,9 @@ namespace PepeForWinS
         {
             if (File.Exists("text.txt"))
             {
-                Process.Start("script2.bat");
+                /*Запуск второго скрипта*/
+               // Process.Start("script2.bat");
+
                 using (FileStream fs = File.Create("textsuka.txt"))
                 {
                     string info = "";
