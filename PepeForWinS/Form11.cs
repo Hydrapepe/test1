@@ -17,7 +17,7 @@ namespace PepeForWinS
             InitializeComponent();
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        public void Button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
