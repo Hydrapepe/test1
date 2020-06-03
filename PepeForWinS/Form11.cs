@@ -22,7 +22,7 @@ namespace PepeForWinS
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             Form12 fr12 = new Form12();
             this.Hide();
@@ -30,7 +30,7 @@ namespace PepeForWinS
             this.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             Form13 fr13 = new Form13();
             this.Hide();
