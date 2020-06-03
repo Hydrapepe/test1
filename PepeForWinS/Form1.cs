@@ -65,13 +65,22 @@ namespace PepeForWinS
         private void Button1_Click(object sender, EventArgs e)
         {
             Form2 fr2 = new Form2();
-            fr2.Show();
-            Hide();
+            this.Hide();
+            fr2.ShowDialog();
+            this.Show();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form11 fr11 = new Form11();
+            this.Hide();
+            fr11.ShowDialog();
+            this.Show();
         }
     }
 }
