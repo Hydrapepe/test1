@@ -45,23 +45,18 @@ namespace PepeForWinS
             string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
             try
             {
-                try
-                {
                     words[0] = "DC=" + words[0] + ",";
+                    SERVER_DOT_SPLIT = words[0];
                     words[1] = "DC=" + words[1] + ",";
+                    SERVER_DOT_SPLIT += words[1];
                     words[2] = "DC=" + words[2] + ",";
+                    SERVER_DOT_SPLIT += words[2];
                     words[3] = "DC=" + words[3] + ",";
+                    SERVER_DOT_SPLIT += words[3];
                     words[4] = "DC=" + words[4] + ",";
+                    SERVER_DOT_SPLIT += words[4];
                     words[5] = "DC=" + words[5];
-                }
-                catch
-                { }
-                SERVER_DOT_SPLIT = words[0];
-                SERVER_DOT_SPLIT += words[1];
-                SERVER_DOT_SPLIT += words[2];
-                SERVER_DOT_SPLIT += words[3];
-                SERVER_DOT_SPLIT += words[4];
-                SERVER_DOT_SPLIT += words[5];
+                    SERVER_DOT_SPLIT += words[5];
             }
             catch
             {
