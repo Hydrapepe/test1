@@ -83,5 +83,12 @@ namespace PepeForWinS
             fr11.Show();
             Hide();
         }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Form21 fr21 = new Form21();
+            fr21.Show();
+            Hide();
+        }
     }
 }
