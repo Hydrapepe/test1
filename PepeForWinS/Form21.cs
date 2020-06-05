@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
 
 namespace PepeForWinS
 {
@@ -17,9 +18,16 @@ namespace PepeForWinS
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        public void Xz()
+        {
+            WebClient Client = new WebClient();
+            Client.UploadFile("pepega.com", @"C:\test.xml");
+            
         }
     }
 }

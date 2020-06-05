@@ -97,18 +97,18 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(96, 25);
             this.button4.TabIndex = 3;
-            this.button4.Text = "НЕ ТЫК";
+            this.button4.Text = "Тык";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(506, 78);
+            this.label3.Location = new System.Drawing.Point(472, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Хмхм";
+            this.label3.Text = "Настройка всего";
             // 
             // pictureBox1
             // 
@@ -140,9 +140,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(505, 33);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 6;
-            this.label5.Text = "xmmm";
+            this.label5.Text = "Debil";
             // 
             // Form1
             // 
