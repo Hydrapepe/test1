@@ -16,17 +16,17 @@ namespace PepeForWinS
 {
     class Program
     {
-        // If modifying these scopes, delete your previously saved credentials
-        // at ~/.credentials/drive-dotnet-quickstart.json
-        static string[] Scopes = { DriveService.Scope.DriveReadonly };
-        static string ApplicationName = "Drive API .NET Quickstart";
+        // If modifying these scopes, delete your previously saved client_secret
+        // at ~/.client_secret/drive-dotnet-quickstart.json
+        static readonly string[] Scopes = { DriveService.Scope.DriveReadonly };
+        static readonly string ApplicationName = "Drive API .NET Quickstart";
 
-        static void Main(string[] args)
+        static void Main()
         {
             UserCredential credential;
 
             using (var stream =
-                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
+                new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
