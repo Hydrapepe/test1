@@ -93,7 +93,7 @@ namespace PepeForWinS
             {
                 //генерация времянка
                 string zaglyshka = "New-ADOrganizationalUnit -Name:" + NAME_GROUP + "-Path:" + SERVER_DOT_SPLIT + " -ProtectedFromAccidentalDeletion:$true -Server:" + SERVER_NAME_FULL + "";
-                string zaglyshka1 = "{$org=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\n$username=" + USER_NAME + "\n$count=" + COUNT + "\nforeach ($i in $count)\n{New-AdUser -Name $username$i" + $"-GivenName {USER_NAME3}$i" + "-Surname " + $"{USER_NAME2}$i" + "- SamAccountName " + $"{USER_NAME}$i" + "-UserPrincipalName " + $"$username$i@{DOMAIN_NAME_FULL}" + " -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString" + PASSWORD + "-AsPlainText - force) - passThru}}";
+                string zaglyshka1 = "{$org=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\n$username=" + USER_NAME + "\n$count=1.." + COUNT + "\nforeach ($i in $count)\n{New-AdUser -Name $username$i" + "-GivenName "+USER_NAME3+"$i" + "-Surname " + USER_NAME2+"$i" + "- SamAccountName " + USER_NAME+"$i" + "-UserPrincipalName " + "$username$i@"+DOMAIN_NAME_FULL + " -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString" + PASSWORD + "-AsPlainText - force) - passThru}}";
 
                 if (group % 2 == 1) {itog=1;}
                 else { itog = 0; }
