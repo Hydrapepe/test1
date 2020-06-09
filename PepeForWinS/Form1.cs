@@ -39,7 +39,6 @@ namespace PepeForWinS
             if (File.Exists("text.txt"))
             {
                Process.Start("pepe2.ps1");
-
                 using (FileStream fs = File.Create("textsuka.txt"))
                 {
                     string info = "";
