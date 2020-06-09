@@ -40,7 +40,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 44);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Начать";
+            this.button1.Text = "Готово";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -65,9 +65,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(318, 201);
+            this.textBox1.Location = new System.Drawing.Point(233, 189);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(275, 20);
             this.textBox1.TabIndex = 3;
             // 
             // Form21

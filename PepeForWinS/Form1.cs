@@ -38,8 +38,7 @@ namespace PepeForWinS
         {
             if (File.Exists("text.txt"))
             {
-                /*Запуск второго скрипта*/
-               // Process.Start("script2.bat");
+               Process.Start("pepe2.ps1");
 
                 using (FileStream fs = File.Create("textsuka.txt"))
                 {
