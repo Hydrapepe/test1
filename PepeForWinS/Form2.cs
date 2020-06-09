@@ -22,28 +22,11 @@ namespace PepeForWinS
 
         public void Button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Перезагрузить сейчас?", "Ваш компьютер будет перезагружен несколько раз", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                HOLLY_TERRA();
-                using (FileStream fs5 = File.Create("text.txt"))
-                {
-                    string info = "";
-                    using (var sr = new StreamWriter(fs5))
-                    {
-                        sr.Write(info);
-                    }
-                }
-                AddAutostart();
-                Process.Start("pepe1.ps1");
-            }
+
+         HOLLY_TERRA();
+
         }
-        public void AddAutostart()
-        {
-            string progName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-            string run = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run";
-            Registry.SetValue(run,"Prog", progName);
-        }
+
         public string IP_SERVER,MASK, GATEWAY, HOSTNAME,NETWORK, LASTBYTE,DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NAME_USER;
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -73,7 +56,7 @@ namespace PepeForWinS
             }
         public void HOLLY_TERRA()
         {
-            string[] Mars = new string[] { "pepe1.ps1", "pepe2.ps1"};
+            string[] Mars = new string[] { "pepe1.ps1", "pepe2.ps1", "pepe3.ps1"};
             string[] Europa = new string[] {
                 /*КУскок 1*/ "New-NetIPAddress -InterfaceIndex 12 -IPAddress "+IP_SERVER+" –PrefixLength "+MASK+" -DefaultGateway "+GATEWAY+"\nSet-DnsClientServerAddress -InterfaceIndex 12 -ServerAddresses "+IP_SERVER+", "+IP_SERVER+"\nRename-Computer -NewName " + HOSTNAME + " -Force\nRestart-Computer -Force",
                 /*КУскок 2*/ "Import-Module ServerManager\nAdd-WindowsFeature –Name AD-Domain-Services –IncludeAllSubFeature –IncludeManagementTools\nImport-Module ADDSDeployment\nInstall-ADDSForest -CreateDnsDelegation:$false -DatabasePath \"C:\\Windows\\NTDS\" -DomainMode \"Win2012\" -DomainName \"" + DOMAINNAME + "\" -DomainNetbiosName "+NAME_USER+" -ForestMode \"Win2012\" -InstallDns:$true -LogPath \"C:\\Windows\\NTDS\" -NoRebootOnCompletion:$false -SysvolPath \"C:\\Windows\\SYSVOL\" -Force:$true -SafeModeAdministratorPassword (convertto-securestring Windows1 -asplaintext -force)",
@@ -97,6 +80,7 @@ namespace PepeForWinS
                     Console.WriteLine(ex.ToString());
                 }
             }
+            DialogResult result = MessageBox.Show("Готово! Скрипты сгенерированы в папке с программой.");
         }
         private void Button4_Click(object sender, EventArgs e)
         {

