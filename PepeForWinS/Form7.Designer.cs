@@ -40,6 +40,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -59,6 +60,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Мед отдел";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button2
             // 
@@ -68,6 +70,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Офис руководства";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
             // 
@@ -77,7 +80,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "IT отдел";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button7
             // 
@@ -87,7 +90,7 @@
             this.button7.TabIndex = 11;
             this.button7.Text = "Выход";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // radioButton1
             // 
@@ -100,7 +103,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Больница";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -111,7 +114,7 @@
             this.radioButton2.TabIndex = 13;
             this.radioButton2.Text = "Пекарня";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.RadioButton2_CheckedChanged);
             // 
             // button3
             // 
@@ -122,7 +125,7 @@
             this.button3.Text = "IT отдел";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button1_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -133,6 +136,7 @@
             this.button4.Text = "Кадры";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button6
             // 
@@ -143,6 +147,7 @@
             this.button6.Text = "Офис руководства";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Visible = false;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // label1
             // 
@@ -163,6 +168,18 @@
             this.button8.Text = "Бухгалтерия";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Visible = false;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(191, 282);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(86, 45);
+            this.button9.TabIndex = 5;
+            this.button9.Text = "Цех";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Visible = false;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // Form7
             // 
@@ -174,6 +191,7 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -182,6 +200,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form7";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form7";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,5 +221,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }

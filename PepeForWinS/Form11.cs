@@ -91,7 +91,6 @@ namespace PepeForWinS
             }
             catch
             {
-                //генерация времянка
                 string zaglyshka = "New-ADOrganizationalUnit -Name:" + NAME_GROUP + "-Path:" + SERVER_DOT_SPLIT + " -ProtectedFromAccidentalDeletion:$true -Server:" + SERVER_NAME_FULL + "";
                 string zaglyshka1 = "{$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" + 
                     "\n$username=" + USER_NAME + 
