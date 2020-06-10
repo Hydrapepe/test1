@@ -80,7 +80,7 @@ namespace PepeForWinS
                     Console.WriteLine(ex.ToString());
                 }
             }
-            DialogResult result = MessageBox.Show("Готово! Скрипты сгенерированы в папке с программой.");
+            DialogResult = MessageBox.Show("Готово! Скрипты сгенерированы в папке с программой, Спасибо за использование PEPESOFT.");
         }
         private void Button4_Click(object sender, EventArgs e)
         {
