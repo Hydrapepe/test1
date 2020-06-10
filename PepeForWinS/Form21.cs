@@ -33,7 +33,7 @@ namespace PepeForWinS
         static readonly string[] Scopes = { DriveService.Scope.Drive };
         static readonly string ApplicationName = "PepeSoft";
         static readonly string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
-        static readonly string _fileName = "Naebal";
+        static readonly string _fileName = "test";
         static readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.txt";
         static readonly string _contentType= "application/xml";
         static string UTF8ToWin1251(string sourceStr)
