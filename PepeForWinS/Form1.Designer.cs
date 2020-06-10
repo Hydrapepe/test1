@@ -39,13 +39,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(57, 94);
+            this.button1.Location = new System.Drawing.Point(51, 79);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 25);
             this.button1.TabIndex = 0;
@@ -66,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 78);
+            this.label1.Location = new System.Drawing.Point(44, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
             this.label1.TabIndex = 2;
@@ -74,7 +76,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(57, 200);
+            this.button3.Location = new System.Drawing.Point(51, 132);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 25);
             this.button3.TabIndex = 0;
@@ -85,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 184);
+            this.label2.Location = new System.Drawing.Point(30, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 13);
             this.label2.TabIndex = 2;
@@ -146,6 +148,25 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Debil";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(51, 198);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(91, 25);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Тык";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(39, 182);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(127, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Установка приложений";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,8 +177,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -187,6 +210,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
