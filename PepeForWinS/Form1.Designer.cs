@@ -125,7 +125,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(12, 24);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(179, 256);
+            this.pictureBox1.Size = new System.Drawing.Size(179, 231);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -143,7 +143,7 @@
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Location = new System.Drawing.Point(421, 24);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(185, 122);
+            this.pictureBox2.Size = new System.Drawing.Size(185, 202);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
@@ -178,7 +178,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(77, 222);
+            this.label7.Location = new System.Drawing.Point(505, 144);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 8;
@@ -186,9 +186,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(51, 238);
+            this.button6.Location = new System.Drawing.Point(475, 167);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(91, 25);
+            this.button6.Size = new System.Drawing.Size(96, 25);
             this.button6.TabIndex = 7;
             this.button6.Text = "Тык";
             this.button6.UseVisualStyleBackColor = true;
