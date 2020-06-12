@@ -94,6 +94,11 @@ namespace PepeForWinS
             this.Show();
         }
 
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
                 label2.Visible = true;

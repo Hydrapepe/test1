@@ -49,6 +49,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button3
@@ -239,11 +240,22 @@
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Visible = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 386);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Назад";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button3_Click);
+            // 
             // Form11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -264,8 +276,10 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Name = "Form11";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание пользователей";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -294,5 +308,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button2;
     }
 }

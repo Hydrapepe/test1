@@ -39,6 +39,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -141,7 +142,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(85, 250);
+            this.button7.Location = new System.Drawing.Point(12, 266);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 10;
@@ -149,12 +150,23 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(12, 239);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Назад";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button7_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 301);
             this.ControlBox = false;
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
@@ -187,5 +199,6 @@
         public System.Windows.Forms.CheckBox checkBox2;
         public System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button3;
     }
 }

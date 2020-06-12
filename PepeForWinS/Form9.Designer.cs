@@ -48,7 +48,6 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -57,12 +56,13 @@
             this.checkBox20 = new System.Windows.Forms.CheckBox();
             this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.checkBox22 = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(385, 301);
+            this.label1.Location = new System.Drawing.Point(372, 330);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 36;
@@ -269,7 +269,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(383, 335);
+            this.button3.Location = new System.Drawing.Point(370, 364);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(106, 41);
             this.button3.TabIndex = 17;
@@ -277,19 +277,10 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(383, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 40);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Назад";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(380, 270);
+            this.label2.Location = new System.Drawing.Point(367, 299);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 15;
@@ -366,14 +357,26 @@
             this.checkBox22.Text = "1C";
             this.checkBox22.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 364);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 34);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Назад";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // Form9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.checkBox16);
@@ -398,10 +401,10 @@
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Name = "Form9";
-            this.Text = "Form9";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Устанока\\Обновление программ";
             this.Load += new System.EventHandler(this.Form9_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -429,7 +432,6 @@
         public System.Windows.Forms.CheckBox checkBox3;
         public System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
@@ -438,5 +440,6 @@
         public System.Windows.Forms.CheckBox checkBox20;
         public System.Windows.Forms.CheckBox checkBox21;
         public System.Windows.Forms.CheckBox checkBox22;
+        private System.Windows.Forms.Button button2;
     }
 }

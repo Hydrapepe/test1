@@ -33,5 +33,10 @@ namespace PepeForWinS
         {
             Application.Exit();
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
