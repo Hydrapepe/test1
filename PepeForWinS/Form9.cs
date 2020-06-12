@@ -35,8 +35,8 @@ namespace PepeForWinS
                 }).WaitForExit();
                 Europa[number].Checked = true;
                 Europa[number].ForeColor = Color.Lime;
-                fr9.label2.Text = $"Установленно: {number}/{q}";
-                fr9.label1.Text = $"Осталось ~ {time} минуты";
+                fr9.label2.Text = "Установленно: "+number + "/" + q;
+                fr9.label1.Text = "Осталось ~ " + time + " минуты";
             }
         }
     private void Button3_Click(object sender, EventArgs e)
@@ -55,17 +55,17 @@ namespace PepeForWinS
                         Thread.Sleep(20000);
                         fr9.checkBox19.Checked = true;
                         fr9.checkBox19.ForeColor = Color.Lime;
-                        fr9.label2.Text = $"Установленно: 19/{q}";
-                        fr9.label1.Text = $"Осталось ~ 2 минуты";
+                        fr9.label2.Text = "Установленно: 19/"+q;
+                        fr9.label1.Text = "Осталось ~ 2 минуты";
                         Thread.Sleep(10000);
                         fr9.checkBox20.Checked = true;
                         fr9.checkBox20.ForeColor = Color.Lime;
-                        fr9.label2.Text = $"Установленно: 20/{q}";
+                        fr9.label2.Text = "Установленно: 20/" + q;
                         Thread.Sleep(10000);
                         fr9.checkBox21.Checked = true;
                         fr9.checkBox21.ForeColor = Color.Lime;
-                        fr9.label2.Text = $"Установленно: 21/{q}";
-                        fr9.label1.Text = $"Осталось 0 минуты";
+                        fr9.label2.Text = "Установленно: 21/" + q;
+                        fr9.label1.Text = "Осталось 0 минуты";
                     }
                     else 
                     {
@@ -79,7 +79,7 @@ namespace PepeForWinS
                             value *= 1000;
                             Thread.Sleep(value);
                             Europa[number].Visible = false;
-                            fr9.label2.Text = $"Обновленно: {number}/21";
+                            fr9.label2.Text = "Установленно: " + number + "/21";
                             if (number == 11)
                             {
                                 Process.Start(new ProcessStartInfo
