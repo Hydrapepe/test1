@@ -18,6 +18,11 @@ namespace PepeForWinS
         public int group,chislo,itog;  
         public string DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME,COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshka1;
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
             group += 1;

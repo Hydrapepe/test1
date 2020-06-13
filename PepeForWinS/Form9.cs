@@ -21,24 +21,7 @@ namespace PepeForWinS
         {
             InitializeComponent();
         }
-        public static void Holy_Terra(CheckBox[] Europa, string[] Mars, int time)
-        {
-            Form9 fr9 = (Form9)Application.OpenForms["Form9"];
-            int q = time;
-            for (int number = 0; number != 17; number++, time--)
-            {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = "cmd",
-                    Arguments = Mars[number],
-                    WindowStyle = ProcessWindowStyle.Hidden
-                }).WaitForExit();
-                Europa[number].Checked = true;
-                Europa[number].ForeColor = Color.Lime;
-                fr9.label2.Text = "Установленно: "+number + "/" + q;
-                fr9.label1.Text = "Осталось ~ " + time + " минуты";
-            }
-        }
+
     private void Button3_Click(object sender, EventArgs e)
         {
             Form9 fr9 = (Form9)Application.OpenForms["Form9"];
@@ -46,12 +29,25 @@ namespace PepeForWinS
             {
                 case 1:
                     if (Convert.ToInt32(fr9.textBox2.Text) == 1) 
-                    { 
-                        int q = 21;
+                    {
+                        int time = 21;
+                        int q = time;
                         fr9.checkBox18.Visible = false; fr9.checkBox22.Visible = false;
                         CheckBox[] Europa = new CheckBox[] { fr9.checkBox1, fr9.checkBox2, fr9.checkBox3, fr9.checkBox4, fr9.checkBox5, fr9.checkBox6, fr9.checkBox7, fr9.checkBox8, fr9.checkBox9, fr9.checkBox10, fr9.checkBox11, fr9.checkBox12, fr9.checkBox13, fr9.checkBox14, fr9.checkBox15, fr9.checkBox16, fr9.checkBox17 };
                         string[] Mars = new string[] { "/c xcopy \"A:\\soft\\RadminViewer3\" \"C:\\Program\\RadminViewer3\" /E /I /y", @"/c C:\Windows\System32\wusa.exe A:\soft\WindowsTH-RSAT_WS2016-x64.msu /quiet /norestart", @"/c start /wait A:\soft\Skype-8.59.0.77.exe /VERYSILENT /SP- /NOCANCEL /NORESTART /SUPPRESSMSGBOXES /NOLAUNCH", @"/c A:\soft\office2007\SETUP /adminfile qwerty.msp", "/c xcopy \"A:\\soft\\KasperskyAntivirusInternetSecurity\" \"C:\\Programs\\KasperskyAntivirusInternetSecurity\" /E /I /y", @"/c A:\soft\ccsetup566.exe /S /L=1049 /D=C:\CCleaner", @"/c A:\soft\Alcohol.120.v2.1.0.30316.exe /S /RU /d=C:\Alcohol120", "/c xcopy \"A:\\soft\\KVRT\" \"C:\\Programs\\RVRT\" /E /I /y", @"/c A:\soft\putty-0.62-installer.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-", @"/c A:\soft\7z.exe /S /D = 'C:\Program Files\7-Zip'", @"/c A:\soft\FileZilla_3.47.2.1_win64-setup.exe /НКРС /S /D = 'C:\Program Files\FILEZILLA'", @"/c A:\soft\PacketTracer-7.3.0-win64-setup /verysilent", "/c xcopy \"A:\\soft\\Victoria\" \"C:\\Programs\\Victoria\" /E /I /y", @"/c A:\soft\ATI.2016.v19.0.0.6571.exe /S /RU /d=C:\Acronis True Image", @"/c A:\soft\rcsetup153.exe /S /L=1049 /D=C:\Recuva", @"/c A:\soft\AdobeAcrobat\AdobeAcrobat\setup.exe -sfx_nu /sALL /msi EULA_ACCEPT=YES", @"/c msiexec.exe /i A:\soft\FirefoxSetup.msi /qn" };
-                        Holy_Terra(Europa, Mars, q);
+                        for (int number = 0; number != 17; number++, time--)
+                        {
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = "cmd",
+                                Arguments = Mars[number],
+                                WindowStyle = ProcessWindowStyle.Hidden
+                            }).WaitForExit();
+                            Europa[number].Checked = true;
+                            Europa[number].ForeColor = Color.Lime;
+                            fr9.label2.Text = "Установленно: " + number + "/" + q;
+                            fr9.label1.Text = "Осталось ~ " + time + " минуты";
+                        }
                         Thread.Sleep(20000);
                         fr9.checkBox19.Checked = true;
                         fr9.checkBox19.ForeColor = Color.Lime;
@@ -137,7 +133,7 @@ namespace PepeForWinS
         {
             this.Close();
         }
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

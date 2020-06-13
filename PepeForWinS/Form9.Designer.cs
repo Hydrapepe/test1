@@ -77,7 +77,7 @@
             this.button4.TabIndex = 35;
             this.button4.Text = "Выход";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // checkBox1
             // 

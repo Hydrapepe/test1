@@ -23,8 +23,9 @@ namespace PepeForWinS
         private void Button1_Click(object sender, EventArgs e)
         {
             Form2 fr2 = new Form2();
-            fr2.Show();
-            Hide();
+            this.Hide();
+            fr2.ShowDialog();
+            this.Show();
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -35,22 +36,25 @@ namespace PepeForWinS
         private void Button3_Click(object sender, EventArgs e)
         {
             Form11 fr11 = new Form11();
-            fr11.Show();
-            Hide();
+            this.Hide();
+            fr11.ShowDialog();
+            this.Show();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
             Form21 fr21 = new Form21();
-            fr21.Show();
-            Hide();
+            this.Hide();
+            fr21.ShowDialog();
+            this.Show();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             Form7 fr7 = new Form7();
-            fr7.Show();
-            Hide();
+            this.Hide();
+            fr7.ShowDialog();
+            this.Show();
         }
     }
 }

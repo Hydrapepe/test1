@@ -108,5 +108,10 @@ namespace PepeForWinS
             var file = request.ResponseBody;
             return file.Id;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
