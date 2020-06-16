@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using Google.Apis.Drive.v3;
 using Google.Apis.Auth.OAuth2;
+using System.Globalization;
 using System.Threading;
 using Google.Apis.Util.Store;
 using Google.Apis.Services;
@@ -29,13 +30,13 @@ namespace PepeForWinS
         {
             Application.Exit();
         }
-
+        public string Hydra, NAME_USER,IP_ADDRESS,DOMAIN_NAME_FULL, SERVER_DOT_SPLIT;
         static readonly string[] Scopes = { DriveService.Scope.Drive };
         static readonly string ApplicationName = "PepeSoft";
         static readonly string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
         static readonly string _fileName = "test";
-        static readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.txt";
-        static readonly string _contentType= "application/xml";
+        static readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
+        static readonly string _contentType= "application/x-sh";
         static string UTF8ToWin1251(string sourceStr)
         {
             Encoding utf8 = Encoding.UTF8;
@@ -45,14 +46,15 @@ namespace PepeForWinS
             return win1251.GetString(win1251Bytes);
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        public void Button1_Click(object sender, EventArgs e)
         {
             try
             {
-                using (FileStream fs = System.IO.File.Create("Pepe.txt"))
+                using (FileStream fs = System.IO.File.Create("Pepe.sh"))
                 {
+                    Pepegoto();
                     Encoding win1251 = Encoding.GetEncoding(1251);
-                    string info = UTF8ToWin1251(textBox1.Text);
+                    string info = UTF8ToWin1251(Hydra);
                     using (var sr = new StreamWriter(fs, win1251))
                     {
                         sr.Write(info);
@@ -113,5 +115,21 @@ namespace PepeForWinS
         {
             this.Close();
         }
+
+        public void Pepegoto()
+        {
+            DOMAIN_NAME_FULL = textBox4.Text;
+            IP_ADDRESS = textBox2.Text;
+            NAME_USER = textBox5.Text;
+            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            string WORKGROUP = words[0].ToUpper(new CultureInfo("en-US", false));
+            DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
+            Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='"+IP_ADDRESS+ "'\ndomain='"+ words[0] + "'\nworkgroup='"+ WORKGROUP + "'\nrealm='"+ DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
+        }
+
+
+
+
+
     }
 }
