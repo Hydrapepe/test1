@@ -56,5 +56,13 @@ namespace PepeForWinS
             fr7.ShowDialog();
             this.Show();
         }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            Form6 fr6 = new Form6();
+            this.Hide();
+            fr6.ShowDialog();
+            this.Show();
+        }
     }
 }

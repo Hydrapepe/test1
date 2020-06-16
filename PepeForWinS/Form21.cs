@@ -109,7 +109,7 @@ namespace PepeForWinS
             return file.Id;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }

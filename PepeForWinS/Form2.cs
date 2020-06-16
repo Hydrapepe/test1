@@ -29,7 +29,7 @@ namespace PepeForWinS
 
         public string IP_SERVER,MASK, GATEWAY, HOSTNAME,NETWORK, LASTBYTE,DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NAME_USER;
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }

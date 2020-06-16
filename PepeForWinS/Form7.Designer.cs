@@ -52,6 +52,7 @@
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Выбирите отдел";
+            this.label2.Visible = false;
             // 
             // button5
             // 
@@ -61,6 +62,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Мед отдел";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button2
@@ -71,6 +73,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Офис руководства";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
@@ -81,6 +84,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "IT отдел";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button7
@@ -96,12 +100,10 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(13, 13);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(74, 17);
             this.radioButton1.TabIndex = 12;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Больница";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
