@@ -12,7 +12,6 @@ namespace PepeForWinS
         {
             InitializeComponent();
         }
-        public int i;
         public string NAME_POLISY,text,DOMAIN_NAME_FULL, NAME_GROUP,SERVER_DOT_SPLIT;
 
         private void Button1_Click(object sender, EventArgs e)
@@ -27,12 +26,12 @@ namespace PepeForWinS
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            i = 1 ;
+            button3.Enabled = true;
         }
         private void Button3_Click(object sender, EventArgs e)
         {
-            if (i == 1)
-            {
+
+                button3.Enabled = true;
                 DOMAIN_NAME_FULL = textBox3.Text;
                 NAME_POLISY = textBox1.Text;
                 NAME_GROUP = textBox2.Text;
@@ -67,7 +66,6 @@ namespace PepeForWinS
                     }
                 }
             }
-        }
         private static string UTF8ToWin1251(string sourceStr)
         {
             Encoding utf8 = Encoding.UTF8;
