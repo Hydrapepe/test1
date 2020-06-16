@@ -30,14 +30,16 @@ namespace PepeForWinS
         {
             Application.Exit();
         }
+
         public string Hydra, NAME_USER,IP_ADDRESS,DOMAIN_NAME_FULL, SERVER_DOT_SPLIT;
-        static readonly string[] Scopes = { DriveService.Scope.Drive };
-        static readonly string ApplicationName = "PepeSoft";
-        static readonly string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
-        static readonly string _fileName = "test";
-        static readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
-        static readonly string _contentType= "application/x-sh";
-        static string UTF8ToWin1251(string sourceStr)
+        private static readonly string[] Scopes = { DriveService.Scope.Drive };
+        private static readonly string ApplicationName = "PepeSoft";
+        private static readonly string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
+        private static readonly string _fileName = "test";
+        private static readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
+        private static readonly string _contentType = "application/x-sh";
+
+        private static string UTF8ToWin1251(string sourceStr)
         {
             Encoding utf8 = Encoding.UTF8;
             Encoding win1251 = Encoding.GetEncoding("Windows-1251");
@@ -87,6 +89,7 @@ namespace PepeForWinS
                     ApplicationName = ApplicationName
                 });
         }
+
         static private UserCredential GetUserCredential()
         {
             using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
@@ -102,6 +105,7 @@ namespace PepeForWinS
                     new FileDataStore(creadPath, true)).Result;
             }
         }
+
         private static string UploadFileToDrive(DriveService service,string fileName, string filePath, string contentType)
         {
             var fileMatadata = new Google.Apis.Drive.v3.Data.File
@@ -134,10 +138,5 @@ namespace PepeForWinS
             DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
             Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='"+IP_ADDRESS+ "'\ndomain='"+ words[0] + "'\nworkgroup='"+ WORKGROUP + "'\nrealm='"+ DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
         }
-
-
-
-
-
     }
 }

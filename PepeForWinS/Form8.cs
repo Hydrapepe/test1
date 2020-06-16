@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PepeForWinS
@@ -21,6 +14,7 @@ namespace PepeForWinS
         {
             Application.Exit();
         }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             Form9 fr9 = new Form9();
@@ -30,10 +24,12 @@ namespace PepeForWinS
             fr9.ShowDialog();
             this.Show();
         }
+
         private void Button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void Button2_Click(object sender, EventArgs e)
         {
             Form9 fr9 = new Form9();

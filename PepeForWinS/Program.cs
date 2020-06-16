@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Google.Apis.Auth.OAuth2;
+﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
-using Google.Apis.Drive.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace PepeForWinS
 {
-    class Program
+    internal class Program
     {
         // If modifying these scopes, delete your previously saved client_secret
         // at ~/.client_secret/drive-dotnet-quickstart.json
-        static readonly string[] Scopes = { DriveService.Scope.DriveReadonly };
-        static readonly string ApplicationName = "Drive API .NET Quickstart";
+        private static readonly string[] Scopes = { DriveService.Scope.DriveReadonly };
 
-        static void Main()
+        private static readonly string ApplicationName = "Drive API .NET Quickstart";
+
+        private static void Main()
         {
             UserCredential credential;
 

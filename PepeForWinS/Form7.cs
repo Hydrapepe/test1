@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PepeForWinS
@@ -16,7 +9,9 @@ namespace PepeForWinS
         {
             InitializeComponent();
         }
+
         public int q, tex1, tex2;
+
         private void Button1_Click(object sender, EventArgs e)
         {
             Form8 fr8 = new Form8();
@@ -101,31 +96,30 @@ namespace PepeForWinS
 
         private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-                label2.Visible = true;
-                button1.Visible = true;
-                button2.Visible = true;
-                button5.Visible = true;
-                label1.Visible = false;
-                button3.Visible = false;
-                button4.Visible = false;
-                button6.Visible = false;
-                button8.Visible = false;
-                button9.Visible = false;
+            label2.Visible = true;
+            button1.Visible = true;
+            button2.Visible = true;
+            button5.Visible = true;
+            label1.Visible = false;
+            button3.Visible = false;
+            button4.Visible = false;
+            button6.Visible = false;
+            button8.Visible = false;
+            button9.Visible = false;
         }
 
         private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
-
-                label1.Visible = true;
-                button3.Visible = true;
-                button4.Visible = true;
-                button6.Visible = true;
-                button8.Visible = true;
-                button8.Visible = true;
-                label2.Visible = false;
-                button1.Visible = false;
-                button2.Visible = false;
-                button5.Visible = false;
+            label1.Visible = true;
+            button3.Visible = true;
+            button4.Visible = true;
+            button6.Visible = true;
+            button8.Visible = true;
+            button8.Visible = true;
+            label2.Visible = false;
+            button1.Visible = false;
+            button2.Visible = false;
+            button5.Visible = false;
         }
     }
 }

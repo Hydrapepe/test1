@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Windows.Forms;
 using System.Diagnostics;
-using System.Collections;
+using System.Drawing;
 using System.Threading;
-using System.Windows.Forms.VisualStyles;
+using System.Windows.Forms;
 
 namespace PepeForWinS
 {
@@ -26,6 +18,7 @@ namespace PepeForWinS
             backgroundWorker2.WorkerSupportsCancellation = true;
             progressBar1.Value = 0;
         }
+
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -62,6 +55,7 @@ namespace PepeForWinS
                 }
             }
         }
+
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Form9 fr9 = (Form9)Application.OpenForms["Form9"];
@@ -72,6 +66,7 @@ namespace PepeForWinS
             int t = progressBar1.Value - 1;
             fr9.label2.Text = ("Установленно: " + t + "/20");
         }
+
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled == true)
@@ -87,20 +82,21 @@ namespace PepeForWinS
                 label2.Text = "Done!";
             }
         }
+
         private void Button3_Click(object sender, EventArgs e)
         {
             Form9 fr9 = (Form9)Application.OpenForms["Form9"];
             switch (Convert.ToInt32(fr9.textBox1.Text))
             {
                 case 1:
-                    if (Convert.ToInt32(fr9.textBox2.Text) == 1) 
+                    if (Convert.ToInt32(fr9.textBox2.Text) == 1)
                     {
                         if (backgroundWorker1.IsBusy != true)
                         {
                             backgroundWorker1.RunWorkerAsync();
                         }
                     }
-                    else 
+                    else
                     {
                         if (backgroundWorker2.IsBusy != true)
                         {
@@ -108,55 +104,70 @@ namespace PepeForWinS
                         }
                     }
                     break;
+
                 case 2:
                     break;
+
                 case 3:
                     break;
+
                 case 4:
                     break;
+
                 case 5:
                     break;
+
                 case 6:
                     break;
+
                 case 7:
                     break;
+
                 case 8:
                     break;
+
                 default:
-                        break;
+                    break;
             }
         }
+
         private void Form9_Load(object sender, EventArgs e)
         {
             Form9 fr9 = (Form9)Application.OpenForms["Form9"];
             switch (Convert.ToInt32(textBox1.Text))
             {
                 case 1:
-                        fr9.checkBox18.Visible = false; fr9.checkBox22.Visible = false;
-                        break;
+                    fr9.checkBox18.Visible = false; fr9.checkBox22.Visible = false;
+                    break;
+
                 case 2:
-                        fr9.checkBox2.Visible = false; fr9.checkBox7.Visible = false; fr9.checkBox8.Visible = false; fr9.checkBox9.Visible = false; fr9.checkBox12.Visible = false; fr9.checkBox13.Visible = false; fr9.checkBox14.Visible = false; fr9.checkBox15.Visible = false; fr9.checkBox18.Visible = false; fr9.checkBox19.Visible = false;
-                        break;
+                    fr9.checkBox2.Visible = false; fr9.checkBox7.Visible = false; fr9.checkBox8.Visible = false; fr9.checkBox9.Visible = false; fr9.checkBox12.Visible = false; fr9.checkBox13.Visible = false; fr9.checkBox14.Visible = false; fr9.checkBox15.Visible = false; fr9.checkBox18.Visible = false; fr9.checkBox19.Visible = false;
+                    break;
+
                 case 3:
-                        fr9.checkBox1.Visible = false; fr9.checkBox2.Visible = false; fr9.checkBox7.Visible = false; fr9.checkBox8.Visible = false; fr9.checkBox9.Visible = false; fr9.checkBox11.Visible = false; fr9.checkBox12.Visible = false; fr9.checkBox13.Visible = false; fr9.checkBox14.Visible = false; fr9.checkBox15.Visible = false; fr9.checkBox18.Visible = false; fr9.checkBox21.Visible = false; fr9.checkBox22.Visible = false;
-                        break;
+                    fr9.checkBox1.Visible = false; fr9.checkBox2.Visible = false; fr9.checkBox7.Visible = false; fr9.checkBox8.Visible = false; fr9.checkBox9.Visible = false; fr9.checkBox11.Visible = false; fr9.checkBox12.Visible = false; fr9.checkBox13.Visible = false; fr9.checkBox14.Visible = false; fr9.checkBox15.Visible = false; fr9.checkBox18.Visible = false; fr9.checkBox21.Visible = false; fr9.checkBox22.Visible = false;
+                    break;
+
                 case 4:
                 case 5:
                 case 6:
                 case 7:
                 case 8:
                 default:
-                        break;
+                    break;
             }
         }
+
         private void Button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void Button4_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             if (backgroundWorker1.WorkerSupportsCancellation == true)
@@ -164,6 +175,7 @@ namespace PepeForWinS
                 backgroundWorker1.CancelAsync();
             }
         }
+
         private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs ew)
         {
             BackgroundWorker worker1 = sender as BackgroundWorker;
@@ -195,6 +207,7 @@ namespace PepeForWinS
                 }
             }
         }
+
         private void BackgroundWorker2_ProgressChanged(object sender, ProgressChangedEventArgs ew)
         {
             Form9 fr9 = (Form9)Application.OpenForms["Form9"];
@@ -210,6 +223,7 @@ namespace PepeForWinS
             int t = progressBar1.Value - 1;
             fr9.label2.Text = "Проверка обновления: " + t + "/20";
         }
+
         private void BackgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs ew)
         {
             if (ew.Cancelled == true)
