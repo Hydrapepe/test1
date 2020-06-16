@@ -21,15 +21,9 @@ namespace PepeForWinS
         {
             this.Close();
         }
-
         private void Button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

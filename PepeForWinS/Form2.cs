@@ -27,7 +27,7 @@ namespace PepeForWinS
 
         }
 
-        public string IP_SERVER,MASK, GATEWAY, HOSTNAME,NETWORK, LASTBYTE,DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NAME_USER;
+        public string IP_SERVER,MASK, GATEWAY, HOSTNAME,NETWORK, LASTBYTE,DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NAME_USER,NETBIOS;
 
         private void Button3_Click(object sender, EventArgs e)
         {
@@ -65,7 +65,7 @@ namespace PepeForWinS
             string[] Mars = new string[] { "pepe1.ps1", "pepe2.ps1", "pepe3.ps1"};
             string[] Europa = new string[] {
                 /*КУскок 1*/ "New-NetIPAddress -InterfaceIndex 12 -IPAddress "+IP_SERVER+" –PrefixLength "+MASK+" -DefaultGateway "+GATEWAY+"\nSet-DnsClientServerAddress -InterfaceIndex 12 -ServerAddresses "+IP_SERVER+", "+IP_SERVER+"\nRename-Computer -NewName " + HOSTNAME + " -Force\nRestart-Computer -Force",
-                /*КУскок 2*/ "Import-Module ServerManager\nAdd-WindowsFeature –Name AD-Domain-Services –IncludeAllSubFeature –IncludeManagementTools\nImport-Module ADDSDeployment\nInstall-ADDSForest -CreateDnsDelegation:$false -DatabasePath \"C:\\Windows\\NTDS\" -DomainMode \"Win2012\" -DomainName \"" + DOMAINNAME + "\" -DomainNetbiosName "+NAME_USER+" -ForestMode \"Win2012\" -InstallDns:$true -LogPath \"C:\\Windows\\NTDS\" -NoRebootOnCompletion:$false -SysvolPath \"C:\\Windows\\SYSVOL\" -Force:$true -SafeModeAdministratorPassword (convertto-securestring Windows1 -asplaintext -force)",
+                /*КУскок 2*/ "Import-Module ServerManager\nAdd-WindowsFeature –Name AD-Domain-Services –IncludeAllSubFeature –IncludeManagementTools\nImport-Module ADDSDeployment\nInstall-ADDSForest -CreateDnsDelegation:$false -DatabasePath \"C:\\Windows\\NTDS\" -DomainMode \"Win2012\" -DomainName \"" + DOMAINNAME + "\" -DomainNetbiosName "+NETBIOS+" -ForestMode \"Win2012\" -InstallDns:$true -LogPath \"C:\\Windows\\NTDS\" -NoRebootOnCompletion:$false -SysvolPath \"C:\\Windows\\SYSVOL\" -Force:$true -SafeModeAdministratorPassword (convertto-securestring Windows1 -asplaintext -force)",
                 /*КУскок 3*/ "Add-DnsServerPrimaryZone -DynamicUpdate NonsecureAndSecure -NetworkId " + "'" + NETWORK + "/" + MASK + "'" + " -ReplicationScope Domain\nAdd-DnsServerResourceRecordPtr -Name \"" + LASTBYTE + "\" -ZoneName \"" + REVERS_IP + ".in-addr.arpa\" -AgeRecord -PtrDomainName \"$env:COMPUTERNAME." + DOMAINNAME + "\"" +"\nImport-Module ServerManager\nAdd-WindowsFeature –Name DHCP –IncludeManagementTools\nAdd-DHCPServerSecurityGroup -ComputerName $env:COMPUTERNAME\nRestart-Service dhcpserver\nAdd-DhcpServerInDC -DnsName $env:COMPUTERNAME -IPAddress " + IP_SERVER +"\n$User = \"$env:USERDOMAIN\\$env:USERNAME\"\n$PWord = ConvertTo-SecureString -String Windows1 -AsPlainText -Force\n$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord\nSet-DHCPServerDnsCredential -ComputerName $env:COMPUTERNAME -Credential $Credential\nAdd-DHCPServerv4Scope -Name " + NAME_POOL + " -StartRange " + LOW_RANGE + " -EndRange " + HIGE_RANGE + " -SubnetMask " + MASK255 + " -State Active\nSet-DHCPServerv4OptionValue -ComputerName $env:COMPUTERNAME -DnsServer " + IP_SERVER + " -DnsDomain " + DOMAINNAME + " -Router " + GATEWAY+"\nSet-DHCPServerv4OptionValue -ComputerName $env:COMPUTERNAME -ScopeId "+NETWORK+" -DnsServer "+IP_SERVER+" -DnsDomain "+DOMAINNAME+" -Router " + GATEWAY + "\nRestart-Computer -Force"};
             for (int number = 0; number != 3; number++)
             {

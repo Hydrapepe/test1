@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace PepeForWinS
 {
@@ -24,6 +25,8 @@ namespace PepeForWinS
             {
                 form2.DOMAINNAME = textBox1.Text;
                 form2.REVERS_IP = textBox2.Text;
+                string[] words = form2.DOMAINNAME.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                form2.NETBIOS  = words[0].ToUpper(new CultureInfo("en-US", false));
             }
             if (!(String.IsNullOrEmpty(form2.DOMAINNAME)) && !(String.IsNullOrEmpty(form2.REVERS_IP))) { form2.checkBox2.Checked = true; form2.checkBox2.ForeColor = Color.Lime; }
             this.Close();

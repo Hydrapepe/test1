@@ -48,26 +48,34 @@ namespace PepeForWinS
 
         public void Button1_Click(object sender, EventArgs e)
         {
-            try
+            if (textBox4.Text.Contains("."))
             {
-                using (FileStream fs = System.IO.File.Create("Pepe.sh"))
+                try
                 {
-                    Pepegoto();
-                    Encoding win1251 = Encoding.GetEncoding(1251);
-                    string info = UTF8ToWin1251(Hydra);
-                    using (var sr = new StreamWriter(fs, win1251))
+                    using (FileStream fs = System.IO.File.Create("Pepe.sh"))
                     {
-                        sr.Write(info);
+                        Pepegoto();
+                        Encoding win1251 = Encoding.GetEncoding(1251);
+                        string info = UTF8ToWin1251(Hydra);
+                        using (var sr = new StreamWriter(fs, win1251))
+                        {
+                            sr.Write(info);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                UserCredential credential = GetUserCredential();
+                DriveService service = GetDriveServise(credential);
+                UploadFileToDrive(service, _fileName, _filePath, _contentType);
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.ToString());
+                label1.Visible = true;
+                label1.Text = "Вы алексей!";
             }
-            UserCredential credential = GetUserCredential();
-            DriveService service = GetDriveServise(credential);
-            UploadFileToDrive(service, _fileName, _filePath, _contentType);
         }
 
         static private DriveService GetDriveServise(UserCredential credential)
