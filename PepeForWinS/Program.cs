@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace PepeForWinS
 {
-    internal class Program
+    static internal class Program
     {
         // If modifying these scopes, delete your previously saved client_secret
         // at ~/.client_secret/drive-dotnet-quickstart.json
         private static readonly string[] Scopes = { DriveService.Scope.DriveReadonly };
 
-        private static readonly string ApplicationName = "Drive API .NET Quickstart";
+        private const string ApplicationName = "Drive API .NET Quickstart";
 
         private static void Main()
         {
@@ -27,7 +27,7 @@ namespace PepeForWinS
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
+                const string credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     Scopes,
@@ -53,7 +53,7 @@ namespace PepeForWinS
             IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
                 .Files;
             Console.WriteLine("Files:");
-            if (files != null && files.Count > 0)
+            if (files?.Count > 0)
             {
                 foreach (var file in files)
                 {

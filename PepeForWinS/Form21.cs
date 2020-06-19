@@ -33,11 +33,11 @@ namespace PepeForWinS
 
         public string Hydra, NAME_USER,IP_ADDRESS,DOMAIN_NAME_FULL, SERVER_DOT_SPLIT;
         private static readonly string[] Scopes = { DriveService.Scope.Drive };
-        private static readonly string ApplicationName = "PepeSoft";
-        private static readonly string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
-        private static readonly string _fileName = "test";
-        private static readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
-        private static readonly string _contentType = "application/x-sh";
+        private const string ApplicationName = "PepeSoft";
+        private const string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
+        private const string _fileName = "test";
+        private readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
+        private const string _contentType = "application/x-sh";
 
         private static string UTF8ToWin1251(string sourceStr)
         {

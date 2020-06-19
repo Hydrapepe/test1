@@ -18,7 +18,7 @@ namespace PepeForWinS
 
         private void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
-            group += 1;
+            group ++;
             if (group % 2 == 1)
             {
                 label2.Visible = true;
@@ -56,7 +56,7 @@ namespace PepeForWinS
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            chislo += 1;
+            chislo ++;
             if (chislo % 2 == 1)
             {
                 label1.Visible = true;
@@ -86,33 +86,30 @@ namespace PepeForWinS
             {
                 words[0] = "DC=" + words[0];
                 SERVER_DOT_SPLIT = words[0];
-                words[1] = "," + "DC=" + words[1];
+                words[1] = ",DC=" + words[1];
                 SERVER_DOT_SPLIT += words[1];
-                words[2] = "," + "DC=" + words[2];
+                words[2] = ",DC=" + words[2];
                 SERVER_DOT_SPLIT += words[2];
-                words[3] = "," + "DC=" + words[3];
+                words[3] = ",DC=" + words[3];
                 SERVER_DOT_SPLIT += words[3];
-                words[4] = "," + "DC=" + words[4];
+                words[4] = ",DC=" + words[4];
                 SERVER_DOT_SPLIT += words[4];
-                words[5] = "," + "DC=" + words[5];
+                words[5] = ",DC=" + words[5];
                 SERVER_DOT_SPLIT += words[5];
             }
             catch
             {
-                string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\"" + " -Path:\"" + SERVER_DOT_SPLIT + "\"" + " -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"";
-                if (NAME_GROUP == "")
+                string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"";
+                if (NAME_GROUP?.Length == 0)
                 {
-                    zaglyshka1 = "$org=\"" + SERVER_DOT_SPLIT + "\";" +
-                     "\n$username=\"" + USER_NAME3 + "\";" +
-                     "\n$count=1.." + COUNT + ";" +
-                     "\nforeach ($i in $count)\n{New-AdUser -Name " + "\"" + USER_NAME3 + "$i" + "\"" + " -GivenName \"" + USER_NAME3 + "$i" + "\"" + " -Surname " + "\"" + USER_NAME2 + "$i" + "\"" + " -SamAccountName " + "\"" + USER_NAME + "$i" + "\"" + " -UserPrincipalName " + "\"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\"" + " -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString " + "\"" + PASSWORD + "\"" + " -AsPlainText -force) -passThru }";
+                    zaglyshka1 = $"$org=\"{SERVER_DOT_SPLIT}\";\n$username=\"{USER_NAME3}\";\n$count=1..{COUNT};\nforeach ($i in $count)\n{{New-AdUser -Name \"{USER_NAME3}$i\" -GivenName \"{USER_NAME3}$i\" -Surname \"{USER_NAME2}$i\" -SamAccountName \"{USER_NAME}$i\" -UserPrincipalName \"{USER_NAME}$i@{DOMAIN_NAME_FULL}\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"{PASSWORD}\" -AsPlainText -force) -passThru }}";
                 }
                 else
                 {
                     zaglyshka1 = "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
                      "\n$username=\"" + USER_NAME3 + "\"" +
                      "\n$count=1.." + COUNT +
-                     "\nforeach ($i in $count)\n{New-AdUser -Name " + "\"" + USER_NAME3 + "$i" + "\"" + " -GivenName \"" + USER_NAME3 + "$i" + "\"" + " -Surname " + "\"" + USER_NAME2 + "$i" + "\"" + " -SamAccountName " + "\"" + USER_NAME + "$i" + "\"" + " -UserPrincipalName " + "\"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\"" + " -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString " + "\"" + PASSWORD + "\"" + " -AsPlainText -force) -passThru }";
+                     "\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }";
                 }
                 string[] Mars = new string[] { "group.ps1", "userM.ps1" };
                 string[] Europa = new string[] { zaglyshka, zaglyshka1 };

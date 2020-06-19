@@ -22,7 +22,7 @@ namespace PepeForWinS
                 string[] words = form2.DOMAINNAME.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                 form2.NETBIOS = words[0].ToUpper(new CultureInfo("en-US", false));
             }
-            if (!(String.IsNullOrEmpty(form2.DOMAINNAME)) && !(String.IsNullOrEmpty(form2.REVERS_IP))) { form2.checkBox2.Checked = true; form2.checkBox2.ForeColor = Color.Lime; }
+            if (!string.IsNullOrEmpty(form2.DOMAINNAME) && !string.IsNullOrEmpty(form2.REVERS_IP)) { form2.checkBox2.Checked = true; form2.checkBox2.ForeColor = Color.Lime; }
             this.Close();
         }
 
