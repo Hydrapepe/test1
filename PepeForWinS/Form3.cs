@@ -22,7 +22,7 @@ namespace PepeForWinS
                 form2.HOSTNAME = textBox4.Text;
                 form2.NETWORK = textBox5.Text;
                 form2.LASTBYTE = textBox6.Text;
-                form2.NAME_USER = textBox7.Text;
+                form2.NETBIOS = textBox7.Text;
             }
             if (!string.IsNullOrEmpty(form2.IP_SERVER)
                 && !string.IsNullOrEmpty(form2.MASK)
@@ -30,7 +30,7 @@ namespace PepeForWinS
                 && !string.IsNullOrEmpty(form2.HOSTNAME)
                 && !string.IsNullOrEmpty(form2.NETWORK)
                 && !string.IsNullOrEmpty(form2.LASTBYTE)
-                && !string.IsNullOrEmpty(form2.NAME_USER)) { form2.checkBox1.Checked = true; form2.checkBox1.ForeColor = Color.Lime; }
+                && !string.IsNullOrEmpty(form2.NETBIOS)) { form2.checkBox1.Checked = true; form2.checkBox1.ForeColor = Color.Lime; }
             this.Close();
         }
 

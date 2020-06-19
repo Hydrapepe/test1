@@ -17,7 +17,7 @@ namespace PepeForWinS
             HOLLY_TERRA();
         }
 
-        public string IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NAME_USER, NETBIOS;
+        public string IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS;
 
         private void Button3_Click(object sender, EventArgs e)
         {
