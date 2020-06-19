@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Net;
+﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
-using Google.Apis.Auth.OAuth2;
-using System.Globalization;
-using System.Threading;
-using Google.Apis.Util.Store;
 using Google.Apis.Services;
-using Google.Apis.Drive.v3.Data;
+using Google.Apis.Util.Store;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace PepeForWinS
 {
@@ -31,7 +24,7 @@ namespace PepeForWinS
             Application.Exit();
         }
 
-        public string Hydra, NAME_USER,IP_ADDRESS,DOMAIN_NAME_FULL, SERVER_DOT_SPLIT;
+        public string Hydra, NAME_USER, IP_ADDRESS, DOMAIN_NAME_FULL, SERVER_DOT_SPLIT;
         private static readonly string[] Scopes = { DriveService.Scope.Drive };
         private const string ApplicationName = "PepeSoft";
         private const string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
@@ -106,7 +99,7 @@ namespace PepeForWinS
             }
         }
 
-        private static string UploadFileToDrive(DriveService service,string fileName, string filePath, string contentType)
+        private static string UploadFileToDrive(DriveService service, string fileName, string filePath, string contentType)
         {
             var fileMatadata = new Google.Apis.Drive.v3.Data.File
             {
@@ -114,7 +107,7 @@ namespace PepeForWinS
                 Parents = new List<string> { FolderId }
             };
             FilesResource.CreateMediaUpload request;
-            using(var stream = new FileStream(filePath, FileMode.Open))
+            using (var stream = new FileStream(filePath, FileMode.Open))
             {
                 request = service.Files.Create(fileMatadata, stream, contentType);
                 request.Upload();
@@ -136,7 +129,7 @@ namespace PepeForWinS
             string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
             string WORKGROUP = words[0].ToUpper(new CultureInfo("en-US", false));
             DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
-            Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='"+IP_ADDRESS+ "'\ndomain='"+ words[0] + "'\nworkgroup='"+ WORKGROUP + "'\nrealm='"+ DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info\napt install postfix dovecot-dev -y";
+            Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='" + IP_ADDRESS + "'\ndomain='" + words[0] + "'\nworkgroup='" + WORKGROUP + "'\nrealm='" + DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install postfix dovecot-dev -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
         }
     }
 }

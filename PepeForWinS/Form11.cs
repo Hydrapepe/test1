@@ -18,7 +18,7 @@ namespace PepeForWinS
 
         private void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
-            group ++;
+            group++;
             if (group % 2 == 1)
             {
                 label2.Visible = true;
@@ -56,7 +56,7 @@ namespace PepeForWinS
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            chislo ++;
+            chislo++;
             if (chislo % 2 == 1)
             {
                 label1.Visible = true;

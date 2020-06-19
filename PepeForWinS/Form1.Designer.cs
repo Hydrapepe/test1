@@ -42,8 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -145,7 +143,7 @@
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Location = new System.Drawing.Point(421, 24);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(185, 202);
+            this.pictureBox2.Size = new System.Drawing.Size(185, 105);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
@@ -176,24 +174,6 @@
             this.label6.Size = new System.Drawing.Size(127, 13);
             this.label6.TabIndex = 2;
             this.label6.Text = "Установка приложений";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(505, 144);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Почта";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(475, 167);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(96, 25);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Тык";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -260,8 +240,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -304,8 +282,6 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
