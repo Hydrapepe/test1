@@ -112,6 +112,20 @@ namespace PepeForWinS
                     break;
 
                 case 4:
+                    if (Convert.ToInt32(fr9.textBox2.Text) == 1)
+                    {
+                        if (!backgroundWorker1.IsBusy)
+                        {
+                            backgroundWorker1.RunWorkerAsync();
+                        }
+                    }
+                    else
+                    {
+                        if (!backgroundWorker2.IsBusy)
+                        {
+                            backgroundWorker2.RunWorkerAsync();
+                        }
+                    }
                     break;
 
                 case 5:

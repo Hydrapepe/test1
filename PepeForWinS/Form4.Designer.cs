@@ -75,9 +75,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(334, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 13);
+            this.label2.Size = new System.Drawing.Size(174, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "ReversIP(192.168.1.1=>1.1.168.192)";
+            this.label2.Text = "ReversIP(192.168.1.1=>1.168.192)";
             // 
             // button2
             // 
