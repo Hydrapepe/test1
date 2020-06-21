@@ -100,17 +100,12 @@ namespace PepeForWinS
             catch
             {
                 string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"";
-                if (NAME_GROUP?.Length == 0)
-                {
-                    zaglyshka1 = $"$org=\"{SERVER_DOT_SPLIT}\";\n$username=\"{USER_NAME3}\";\n$count=1..{COUNT};\nforeach ($i in $count)\n{{New-AdUser -Name \"{USER_NAME3}$i\" -GivenName \"{USER_NAME3}$i\" -Surname \"{USER_NAME2}$i\" -SamAccountName \"{USER_NAME}$i\" -UserPrincipalName \"{USER_NAME}$i@{DOMAIN_NAME_FULL}\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"{PASSWORD}\" -AsPlainText -force) -passThru }}";
-                }
-                else
-                {
-                    zaglyshka1 = "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
+                zaglyshka1 = NAME_GROUP?.Length == 0
+                    ? "$org=\"" + SERVER_DOT_SPLIT + "\";\n$username=\"" + USER_NAME3 + "\";\n$count=1.." + COUNT + ";\nforeach ($i in $count)\n{{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }}"
+                    : "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
                      "\n$username=\"" + USER_NAME3 + "\"" +
                      "\n$count=1.." + COUNT +
                      "\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }";
-                }
                 string[] Mars = new string[] { "group.ps1", "userM.ps1" };
                 string[] Europa = new string[] { zaglyshka, zaglyshka1 };
                 if (group % 2 == 1)
