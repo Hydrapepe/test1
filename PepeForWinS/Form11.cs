@@ -8,67 +8,6 @@ namespace PepeForWinS
 {
     public partial class Form11 : Form
     {
-        public int group, chislo, itog;
-        public string DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshka1;
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            group++;
-            if (group % 2 == 1)
-            {
-                label2.Visible = true;
-                label3.Visible = true;
-                textBox3.Visible = true;
-                textBox4.Visible = true;
-            }
-            else
-            {
-                label2.Visible = false;
-                label3.Visible = false;
-                textBox3.Visible = false;
-                textBox4.Visible = false;
-            }
-        }
-
-        public Form11()
-        {
-            InitializeComponent();
-        }
-
-        public void Button3_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private static string UTF8ToWin1251(string sourceStr)
-        {
-            Encoding utf8 = Encoding.UTF8;
-            Encoding win1251 = Encoding.GetEncoding("Windows-1251");
-            byte[] utf8Bytes = utf8.GetBytes(sourceStr);
-            byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
-            return win1251.GetString(win1251Bytes);
-        }
-
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            chislo++;
-            if (chislo % 2 == 1)
-            {
-                label1.Visible = true;
-                textBox1.Visible = true;
-            }
-            else
-            {
-                label1.Visible = false;
-                textBox1.Visible = false;
-                textBox1.Text = "1";
-            }
-        }
 
         public void Button1_Click(object sender, EventArgs e)
         {

@@ -70,6 +70,7 @@
             this.textBox1.TabIndex = 10;
             this.textBox1.Text = "1";
             this.textBox1.Visible = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -80,6 +81,7 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Количество пользователей";
             this.label1.Visible = false;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // checkBox1
             // 
@@ -101,6 +103,7 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Имя группы";
             this.label2.Visible = false;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // checkBox2
             // 
@@ -121,6 +124,7 @@
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Домен";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox2
             // 
@@ -128,6 +132,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(102, 20);
             this.textBox2.TabIndex = 14;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -146,6 +151,7 @@
             this.textBox3.Size = new System.Drawing.Size(102, 20);
             this.textBox3.TabIndex = 14;
             this.textBox3.Visible = false;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
@@ -154,6 +160,7 @@
             this.textBox4.Size = new System.Drawing.Size(102, 20);
             this.textBox4.TabIndex = 14;
             this.textBox4.Visible = false;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label3
             // 
@@ -164,6 +171,7 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Имя сервера";
             this.label3.Visible = false;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label5
             // 
@@ -173,6 +181,7 @@
             this.label5.Size = new System.Drawing.Size(124, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Имя пользователя(-ей)";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // textBox5
             // 
@@ -180,6 +189,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(102, 20);
             this.textBox5.TabIndex = 14;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label6
             // 
@@ -189,6 +199,7 @@
             this.label6.Size = new System.Drawing.Size(151, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Фамилия пользователя(-ей)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // textBox6
             // 
@@ -196,6 +207,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(102, 20);
             this.textBox6.TabIndex = 14;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label7
             // 
@@ -205,6 +217,7 @@
             this.label7.Size = new System.Drawing.Size(149, 13);
             this.label7.TabIndex = 13;
             this.label7.Text = "Отчество пользователя(-ей)";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // textBox7
             // 
@@ -212,6 +225,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(102, 20);
             this.textBox7.TabIndex = 14;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label8
             // 
@@ -221,6 +235,7 @@
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "Пароль";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBox8
             // 
@@ -228,6 +243,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(102, 20);
             this.textBox8.TabIndex = 14;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // checkBox3
             // 
@@ -239,6 +255,7 @@
             this.checkBox3.Text = "Завершенно";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Visible = false;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // button2
             // 

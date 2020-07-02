@@ -16,7 +16,7 @@ namespace PepeForWinS
             backgroundWorker1.WorkerSupportsCancellation = true;
             backgroundWorker2.WorkerReportsProgress = true;
             backgroundWorker2.WorkerSupportsCancellation = true;
-            progressBar1.Value = 0;
+            progressBar1.Value = 1;
         }
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

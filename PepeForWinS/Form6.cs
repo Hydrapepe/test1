@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace PepeForWinS
 {
@@ -64,9 +65,9 @@ namespace PepeForWinS
                         sr.Write(info);
                     }
                 }
+                Process.Start(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe", " -executionpolicy Unrestricted -File " + text);
             }
         }
-
         private static string UTF8ToWin1251(string sourceStr)
         {
             Encoding utf8 = Encoding.UTF8;
