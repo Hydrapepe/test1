@@ -3,6 +3,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Text;
 using System.IO;
+using System.Diagnostics;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 namespace PepeForWinS
 {
@@ -14,12 +22,17 @@ namespace PepeForWinS
             Size = new Size(1075, 550);
         }
         public int group, chislo, itog, q;
-        public string IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q;
-
+        public string Hydra, NAME_USER, IP_ADDRESS,IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q,NAME_POLISY, text;
+        private static readonly string[] Scopes = { DriveService.Scope.Drive };
+        private const string ApplicationName = "PepeSoft";
+        private const string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
+        private const string _fileName = "test";
+        private readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
+        private const string _contentType = "application/x-sh";
         //---------------------------------------------------------------------------------------------------
         //Main methods and other
         //---------------------------------------------------------------------------------------------------
-        private void Button5_Click(object sender, EventArgs e)
+        private void EXIT(object sender, EventArgs e)
         {
             Application.Exit();
         }//exit
@@ -31,10 +44,18 @@ namespace PepeForWinS
             byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
             return win1251.GetString(win1251Bytes);
         }//generate file
+        private void DebianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox2.Visible = true;
+            groupBox2.BringToFront();
+            groupBox2.Location = new Point(12, 27);
+        }//menu Debian
         private void WindowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             groupBox1.Visible = true;
-        }//menu
+            groupBox1.BringToFront();
+            groupBox1.Location = new Point(12, 27);
+        }//menu Windows
         //---------------------------------------------------------------------------------------------------
         //Group11(Main configurate server)
         //---------------------------------------------------------------------------------------------------
@@ -46,21 +67,18 @@ namespace PepeForWinS
         }//group11
         private void Button15_Click(object sender, EventArgs e)
         {
-            groupBox11.Visible = false;
             groupBox111.Visible = true;
             groupBox111.BringToFront();
             groupBox111.Location = new Point (200, 27);
         }//group111
         private void Button13_Click(object sender, EventArgs e)
         {
-            groupBox11.Visible = false;
             groupBox112.BringToFront();
             groupBox112.Visible = true;
             groupBox112.Location = new Point(200, 27);
         }//group112
         private void Button14_Click(object sender, EventArgs e)
         {
-            groupBox11.Visible = false;
             groupBox113.BringToFront();
             groupBox113.Visible = true;
             groupBox113.Location = new Point(200, 27);
@@ -335,5 +353,186 @@ namespace PepeForWinS
             }
             catch { }
         }//generate user
+        //---------------------------------------------------------------------------------------------------
+        //Group14(Configuration GPO)
+        //---------------------------------------------------------------------------------------------------
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            groupBox14.Visible = true;
+            groupBox14.BringToFront();
+            groupBox14.Location = new Point(200, 27);
+        }//group14
+        private void Button21_Click(object sender, EventArgs e)
+        {
+            DOMAIN_NAME_FULL = textBox29.Text;
+            NAME_POLISY = textBox31.Text;
+            NAME_GROUP = textBox30.Text;
+
+            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                words[0] = "OU=" + NAME_GROUP + ",DC=" + words[0];
+                SERVER_DOT_SPLIT = words[0];
+                words[1] = ",DC=" + words[1];
+                SERVER_DOT_SPLIT += words[1];
+                words[2] = ",DC=" + words[2];
+                SERVER_DOT_SPLIT += words[2];
+                words[3] = ",DC=" + words[3];
+                SERVER_DOT_SPLIT += words[3];
+                words[4] = ",DC=" + words[4];
+                SERVER_DOT_SPLIT += words[4];
+                words[5] = ",DC=" + words[5];
+                SERVER_DOT_SPLIT += words[5];
+            }
+            catch
+            {
+                text = "New-GPO -Name \"" + NAME_POLISY + "\" | New-GPLink -Target \"" + SERVER_DOT_SPLIT + "\"\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Policies\\Microsoft\\Windows\\System\" -ValueName DisableCMD -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoRun -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -ValueName DisableRegistryTools -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoControlPanel -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName ScreenSaveActive -Type String -Value 0\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\" -ValueName NoChangingWallPaper -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" - ValueName EnableFirstLogonAnimation  -Type DWord -Value 0";
+                using (FileStream fs = File.Create("polisy.ps1"))
+                {
+                    Encoding win1251 = Encoding.GetEncoding(1251);
+                    string info = UTF8ToWin1251(text);
+                    using (var sr = new StreamWriter(fs, win1251))
+                    {
+                        sr.Write(info);
+                    }
+                }
+            }
+        }//using all GPO
+        private void Button20_Click(object sender, EventArgs e)
+        {
+            DOMAIN_NAME_FULL = textBox29.Text;
+            NAME_POLISY = textBox31.Text;
+            NAME_GROUP = textBox30.Text;
+
+            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                words[0] = "OU=" + NAME_GROUP + ",DC=" + words[0];
+                SERVER_DOT_SPLIT = words[0];
+                words[1] = ",DC=" + words[1];
+                SERVER_DOT_SPLIT += words[1];
+                words[2] = ",DC=" + words[2];
+                SERVER_DOT_SPLIT += words[2];
+                words[3] = ",DC=" + words[3];
+                SERVER_DOT_SPLIT += words[3];
+                words[4] = ",DC=" + words[4];
+                SERVER_DOT_SPLIT += words[4];
+                words[5] = ",DC=" + words[5];
+                SERVER_DOT_SPLIT += words[5];
+            }
+            catch
+            {
+                text = "New-GPO -Name \"" + NAME_POLISY + "\" | New-GPLink -Target \"" + SERVER_DOT_SPLIT + "\"\n";
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Policies\\Microsoft\\Windows\\System\" -ValueName DisableCMD -Type DWord -Value 1\n"; }
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoRun -Type DWord -Value 1\n"; }
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -ValueName DisableRegistryTools -Type DWord -Value 1\n"; }
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoControlPanel -Type DWord -Value 1\n"; }
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName ScreenSaveActive -Type String -Value 0\n"; }
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\" -ValueName NoChangingWallPaper -Type DWord -Value 1\n"; }
+                if (checkBox8.Checked)
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" - ValueName EnableFirstLogonAnimation  -Type DWord -Value 0\n"; }
+                using (FileStream fs = File.Create("polisy.ps1"))
+                {
+                    Encoding win1251 = Encoding.GetEncoding(1251);
+                    string info = UTF8ToWin1251(text);
+                    using (var sr = new StreamWriter(fs, win1251))
+                    {
+                        sr.Write(info);
+                    }
+                }
+            }
+        }//using selective GPO
+         //---------------------------------------------------------------------------------------------------
+         //Group15(Install application)
+         //---------------------------------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------------------------------
+        //Group21(Install Samba & etc)
+        //---------------------------------------------------------------------------------------------------
+        private void Button24_Click(object sender, EventArgs e)
+        {
+            groupBox21.Visible = true;
+            groupBox21.BringToFront();
+            groupBox21.Location = new Point(200, 27);
+        }//group21
+        private void Button27_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (FileStream fs = System.IO.File.Create("Pepe.sh"))
+                {
+                    Pepegoto();
+                    Encoding win1251 = Encoding.GetEncoding(1251);
+                    string info = UTF8ToWin1251(Hydra);
+                    using (var sr = new StreamWriter(fs, win1251))
+                    {
+                        sr.Write(info);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            UserCredential credential = GetUserCredential();
+            DriveService service = GetDriveServise(credential);
+            UploadFileToDrive(service, _fileName, _filePath, _contentType);
+        }
+        static private DriveService GetDriveServise(UserCredential credential)
+        {
+            return new DriveService(
+                new BaseClientService.Initializer
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = ApplicationName
+                });
+        }
+        static private UserCredential GetUserCredential()
+        {
+            using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+            {
+                string creadPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                creadPath = Path.Combine(creadPath, "driveApiCredentials", "drive-credentials.json");
+
+                return GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets,
+                    Scopes,
+                    "User",
+                    CancellationToken.None,
+                    new FileDataStore(creadPath, true)).Result;
+            }
+        }
+        private static string UploadFileToDrive(DriveService service, string fileName, string filePath, string contentType)
+        {
+            var fileMatadata = new Google.Apis.Drive.v3.Data.File
+            {
+                Name = fileName,
+                Parents = new List<string> { FolderId }
+            };
+            FilesResource.CreateMediaUpload request;
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                request = service.Files.Create(fileMatadata, stream, contentType);
+                request.Upload();
+            }
+            var file = request.ResponseBody;
+            return file.Id;
+        }
+        public void Pepegoto()
+        {
+            DOMAIN_NAME_FULL = textBox32.Text;
+            IP_ADDRESS = textBox33.Text;
+            NAME_USER = textBox34.Text;
+            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            string WORKGROUP = words[0].ToUpper(new CultureInfo("en-US", false));
+            DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
+            Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='" + IP_ADDRESS + "'\ndomain='" + words[0] + "'\nworkgroup='" + WORKGROUP + "'\nrealm='" + DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install postfix dovecot-dev -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
+        }
     }
 }
