@@ -13,90 +13,8 @@ namespace PepeForWinS
             InitializeComponent();
             Size = new Size(1075, 550);
         }
-        public int group, chislo, itog;
-        public string IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshka1;
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DOMAIN_NAME_FULL = textBox2.Text;
-            NAME_GROUP = textBox3.Text;
-            SERVER_NAME_FULL = textBox4.Text + "." + DOMAIN_NAME_FULL;
-            USER_NAME = textBox5.Text;
-            COUNT = textBox1.Text;
-            USER_NAME2 = textBox6.Text;
-            USER_NAME3 = textBox7.Text;
-            PASSWORD = textBox8.Text;
-            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            try
-            {
-                words[0] = "DC=" + words[0];
-                SERVER_DOT_SPLIT = words[0];
-                words[1] = ",DC=" + words[1];
-                SERVER_DOT_SPLIT += words[1];
-                words[2] = ",DC=" + words[2];
-                SERVER_DOT_SPLIT += words[2];
-                words[3] = ",DC=" + words[3];
-                SERVER_DOT_SPLIT += words[3];
-                words[4] = ",DC=" + words[4];
-                SERVER_DOT_SPLIT += words[4];
-                words[5] = ",DC=" + words[5];
-                SERVER_DOT_SPLIT += words[5];
-            }
-            catch
-            {
-                string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"";
-                zaglyshka1 = NAME_GROUP?.Length == 0
-                    ? "$org=\"" + SERVER_DOT_SPLIT + "\";\n$username=\"" + USER_NAME3 + "\";\n$count=1.." + COUNT + ";\nforeach ($i in $count)\n{{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }}"
-                    : "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
-                      "\n$username=\"" + USER_NAME3 + "\"" +
-                      "\n$count=1.." + COUNT +
-                      "\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }";
-                string[] Mars = new string[] { "group.ps1", "userM.ps1" };
-                string[] Europa = new string[] { zaglyshka, zaglyshka1 };
-                if (group % 2 == 1)
-                {
-                    for (int number = 0; number != 2; number++)
-                    {
-                        try
-                        {
-                            using (FileStream fs = File.Create(Mars[number]))
-                            {
-                                Encoding win1251 = Encoding.GetEncoding(1251);
-                                string info = UTF8ToWin1251(Europa[number]);
-                                using (var sr = new StreamWriter(fs, win1251))
-                                {
-                                    sr.Write(info);
-                                }
-                            }
-                        }
-                        catch{}
-                    }
-                        checkBox3.Checked = true;
-                        checkBox3.ForeColor = Color.Lime;
-                        checkBox3.Visible = true;
-                }
-                else
-                {
-                    try
-                    {
-                        using (FileStream fs = File.Create("userO.ps1"))
-                        {
-                            Encoding win1251 = Encoding.GetEncoding(1251);
-                            string info = UTF8ToWin1251(zaglyshka1);
-                            using (var sr = new StreamWriter(fs, win1251))
-                            {
-                                sr.Write(info);
-                            }
-                        }
-                    }
-                    catch{}
-
-                    checkBox3.Checked = true;
-                    checkBox3.ForeColor = Color.Lime;
-                    checkBox3.Visible = true;
-                }
-            }
-        }
+        public int group, chislo, itog, q;
+        public string IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q;
 
         //---------------------------------------------------------------------------------------------------
         //Main methods and other
@@ -236,42 +154,186 @@ namespace PepeForWinS
         //---------------------------------------------------------------------------------------------------
         //Group12(Configurate User(Many))
         //---------------------------------------------------------------------------------------------------
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            groupBox12.Visible = true;
+            groupBox12.BringToFront();
+            groupBox12.Location = new Point(200, 27);
+        }//group12
+        private void CheckBox5_CheckedChanged(object sender, EventArgs e)
         {
             group++;
             if (group % 2 == 1)
             {
-                label2.Visible = true;
-                label3.Visible = true;
-                textBox3.Visible = true;
-                textBox4.Visible = true;
+                label23.Visible = true;
+                label8.Visible = true;
+                textBox18.Visible = true;
+                textBox19.Visible = true;
             }
             else
             {
-                label2.Visible = false;
-                label3.Visible = false;
-                textBox3.Visible = false;
-                textBox4.Visible = false;
+                label23.Visible = false;
+                label8.Visible = false;
+                textBox18.Visible = false;
+                textBox19.Visible = false;
             }
         }//checked group_user
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox6_CheckedChanged(object sender, EventArgs e)
         {
             chislo++;
             if (chislo % 2 == 1)
             {
-                label1.Visible = true;
-                textBox1.Visible = true;
+                label24.Visible = true;
+                textBox21.Visible = true;
             }
             else
             {
-                label1.Visible = false;
-                textBox1.Visible = false;
-                textBox1.Text = "1";
+                label24.Visible = false;
+                textBox21.Visible = false;
+                textBox21.Text = "1";
             }
         }//how many user generate
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            DOMAIN_NAME_FULL = textBox20.Text;
+            NAME_GROUP = textBox18.Text;
+            SERVER_NAME_FULL = textBox19.Text + "." + DOMAIN_NAME_FULL;
+            USER_NAME = textBox17.Text;
+            COUNT = textBox21.Text;
+            USER_NAME2 = textBox16.Text;
+            USER_NAME3 = textBox15.Text;
+            PASSWORD = textBox14.Text;
+            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                words[0] = "DC=" + words[0];
+                SERVER_DOT_SPLIT = words[0];
+                words[1] = ",DC=" + words[1];
+                SERVER_DOT_SPLIT += words[1];
+                words[2] = ",DC=" + words[2];
+                SERVER_DOT_SPLIT += words[2];
+                words[3] = ",DC=" + words[3];
+                SERVER_DOT_SPLIT += words[3];
+                words[4] = ",DC=" + words[4];
+                SERVER_DOT_SPLIT += words[4];
+                words[5] = ",DC=" + words[5];
+                SERVER_DOT_SPLIT += words[5];
+            }
+            catch
+            {
+                string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"";
+                string zaglyshka1 = NAME_GROUP?.Length == 0
+                    ? "$org=\"" + SERVER_DOT_SPLIT + "\";\n$username=\"" + USER_NAME3 + "\";\n$count=1.." + COUNT + ";\nforeach ($i in $count)\n{{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }}"
+                    : "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
+                      "\n$username=\"" + USER_NAME3 + "\"" +
+                      "\n$count=1.." + COUNT +
+                      "\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }";
 
+                string zaglyshkaqq = zaglyshka + zaglyshka1;
 
+                        try
+                        {
+                            using (FileStream fs = File.Create("user.ps1"))
+                            {
+                                Encoding win1251 = Encoding.GetEncoding(1251);
+                                string info = UTF8ToWin1251(zaglyshkaqq);
+                                using (var sr = new StreamWriter(fs, win1251))
+                                {
+                                    sr.Write(info);
+                                }
+                            }
+                        }
+                        catch {}
+            }
+        }//generate group user and\or user(one\more)
+        //---------------------------------------------------------------------------------------------------
+        //Group13(Configurate User(unique))
+        //---------------------------------------------------------------------------------------------------
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            groupBox13.Visible = true;
+            groupBox13.BringToFront();
+            groupBox13.Location = new Point(200, 27);
+            q = 1;
+        }//group13
+        private void CheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            group++;
+            if (group % 2 == 1)
+            {
+                label31.Visible = true;
+                label25.Visible = true;
+                textBox26.Visible = true;
+                textBox27.Visible = true;
+            }
+            else
+            {
+                label31.Visible = false;
+                label25.Visible = false;
+                textBox26.Visible = false;
+                textBox27.Visible = false;
+            }
+        }//checked group
+        public void Button11_Click(object sender, EventArgs e)
+        {
+            DOMAIN_NAME_FULL = textBox28.Text;
+            if (!checkBox7.Checked)
+            { NAME_GROUP = textBox26.Text; }
+            SERVER_NAME_FULL = textBox27.Text + "." + DOMAIN_NAME_FULL;
+            USER_NAME = textBox25.Text;
+            USER_NAME2 = textBox24.Text;
+            USER_NAME3 = textBox23.Text;
+            PASSWORD = textBox22.Text;
 
-
+            string[] words = DOMAIN_NAME_FULL.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                words[0] = "DC=" + words[0];
+                SERVER_DOT_SPLIT = words[0];
+                words[1] = ",DC=" + words[1];
+                SERVER_DOT_SPLIT += words[1];
+                words[2] = ",DC=" + words[2];
+                SERVER_DOT_SPLIT += words[2];
+                words[3] = ",DC=" + words[3];
+                SERVER_DOT_SPLIT += words[3];
+                words[4] = ",DC=" + words[4];
+                SERVER_DOT_SPLIT += words[4];
+                words[5] = ",DC=" + words[5];
+                SERVER_DOT_SPLIT += words[5];
+            }
+            catch
+            {
+                if (checkBox4.Checked)
+                {
+                        zaglyshkaq = zaglyshkaq + "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"\n";
+                }
+                zaglyshka1q = zaglyshkaq?.Length == 0
+                    ? zaglyshka1q + "$org=\"" + SERVER_DOT_SPLIT + "\";\n$username=\"" + USER_NAME3 + "\";\n$count=1;\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "\" -GivenName \"" + USER_NAME3 + "\" -Surname \"" + USER_NAME2 + "\" -SamAccountName \"" + USER_NAME + "\" -UserPrincipalName \"" + USER_NAME + "@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }"
+                    : zaglyshka1q + "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
+                      "\n$username=\"" + USER_NAME3 + "\"" +
+                      "\n$count=1" +
+                      "\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "\" -GivenName \"" + USER_NAME3 + "\" -Surname \"" + USER_NAME2 + "\" -SamAccountName \"" + USER_NAME + "\" -UserPrincipalName \"" + USER_NAME + "@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }\n";
+            }
+            textBox28.Text = textBox26.Text = textBox27.Text = textBox25.Text = textBox24.Text = textBox23.Text = textBox22.Text = PASSWORD = USER_NAME3= USER_NAME2=USER_NAME= SERVER_NAME_FULL= DOMAIN_NAME_FULL="";
+            label32.Text= "Всего сгенерируется пользователей :"+q++;
+            checkBox7.Visible = true;
+        }//memory user
+        public void Button7_Click(object sender, EventArgs e)
+        {
+            string zaglyshkaqq= zaglyshkaq + zaglyshka1q;
+            try
+            {
+                using (FileStream fs = File.Create("user.ps1"))
+                {
+                    Encoding win1251 = Encoding.GetEncoding(1251);
+                    string info = UTF8ToWin1251(zaglyshkaqq);
+                    using (var sr = new StreamWriter(fs, win1251))
+                    {
+                        sr.Write(info);
+                    }
+                }
+            }
+            catch { }
+        }//generate user
     }
 }

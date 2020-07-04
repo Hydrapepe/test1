@@ -108,6 +108,27 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.textBox21 = new System.Windows.Forms.TextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.button18 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -116,12 +137,13 @@
             this.groupBox112.SuspendLayout();
             this.groupBox113.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1075, 486);
+            this.pictureBox3.Location = new System.Drawing.Point(26, 255);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(112, 119);
             this.pictureBox3.TabIndex = 12;
@@ -134,6 +156,7 @@
             this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(182, 457);
@@ -153,7 +176,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(7, 211);
+            this.button10.Location = new System.Drawing.Point(7, 167);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(169, 43);
             this.button10.TabIndex = 0;
@@ -162,25 +185,27 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(7, 157);
+            this.button9.Location = new System.Drawing.Point(7, 118);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(169, 43);
             this.button9.TabIndex = 0;
             this.button9.Text = "Создание пользователей (уникальное)";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(7, 93);
+            this.button8.Location = new System.Drawing.Point(7, 69);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(169, 43);
             this.button8.TabIndex = 0;
             this.button8.Text = "Создание пользователей(массовое)";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(7, 32);
+            this.button6.Location = new System.Drawing.Point(7, 20);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(169, 43);
             this.button6.TabIndex = 0;
@@ -518,9 +543,9 @@
             this.groupBox112.Controls.Add(this.textBox8);
             this.groupBox112.Controls.Add(this.textBox9);
             this.groupBox112.Controls.Add(this.button3);
-            this.groupBox112.Location = new System.Drawing.Point(1719, 12);
+            this.groupBox112.Location = new System.Drawing.Point(410, 486);
             this.groupBox112.Name = "groupBox112";
-            this.groupBox112.Size = new System.Drawing.Size(638, 457);
+            this.groupBox112.Size = new System.Drawing.Size(650, 457);
             this.groupBox112.TabIndex = 28;
             this.groupBox112.TabStop = false;
             this.groupBox112.Text = "Заполните поля";
@@ -590,7 +615,7 @@
             this.groupBox113.Controls.Add(this.button12);
             this.groupBox113.Controls.Add(this.label6);
             this.groupBox113.Controls.Add(this.textBox13);
-            this.groupBox113.Location = new System.Drawing.Point(2363, 12);
+            this.groupBox113.Location = new System.Drawing.Point(1075, 486);
             this.groupBox113.Name = "groupBox113";
             this.groupBox113.Size = new System.Drawing.Size(638, 457);
             this.groupBox113.TabIndex = 29;
@@ -704,7 +729,7 @@
             this.groupBox12.Controls.Add(this.checkBox6);
             this.groupBox12.Controls.Add(this.label24);
             this.groupBox12.Controls.Add(this.textBox21);
-            this.groupBox12.Location = new System.Drawing.Point(3007, 12);
+            this.groupBox12.Location = new System.Drawing.Point(1719, 12);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(638, 457);
             this.groupBox12.TabIndex = 30;
@@ -720,7 +745,7 @@
             this.button2.TabIndex = 38;
             this.button2.Text = "Генерация";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label8
             // 
@@ -847,7 +872,7 @@
             this.checkBox5.TabIndex = 23;
             this.checkBox5.Text = "Нажми если нужно создать отдельную группу";
             this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.CheckBox5_CheckedChanged);
             // 
             // checkBox6
             // 
@@ -858,7 +883,7 @@
             this.checkBox6.TabIndex = 22;
             this.checkBox6.Text = "Нажми если нужно больше одного пользователя";
             this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.CheckBox6_CheckedChanged);
             // 
             // label24
             // 
@@ -879,19 +904,225 @@
             this.textBox21.Text = "1";
             this.textBox21.Visible = false;
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.checkBox7);
+            this.groupBox13.Controls.Add(this.button18);
+            this.groupBox13.Controls.Add(this.button11);
+            this.groupBox13.Controls.Add(this.button7);
+            this.groupBox13.Controls.Add(this.label25);
+            this.groupBox13.Controls.Add(this.label26);
+            this.groupBox13.Controls.Add(this.textBox22);
+            this.groupBox13.Controls.Add(this.textBox23);
+            this.groupBox13.Controls.Add(this.textBox24);
+            this.groupBox13.Controls.Add(this.label32);
+            this.groupBox13.Controls.Add(this.label27);
+            this.groupBox13.Controls.Add(this.textBox25);
+            this.groupBox13.Controls.Add(this.label28);
+            this.groupBox13.Controls.Add(this.textBox26);
+            this.groupBox13.Controls.Add(this.label29);
+            this.groupBox13.Controls.Add(this.textBox27);
+            this.groupBox13.Controls.Add(this.label30);
+            this.groupBox13.Controls.Add(this.textBox28);
+            this.groupBox13.Controls.Add(this.label31);
+            this.groupBox13.Controls.Add(this.checkBox4);
+            this.groupBox13.Location = new System.Drawing.Point(1719, 486);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(638, 457);
+            this.groupBox13.TabIndex = 39;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Создаватель пользователей";
+            this.groupBox13.Visible = false;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(6, 42);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(125, 17);
+            this.checkBox7.TabIndex = 39;
+            this.checkBox7.Text = "Удерживать группу";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.Visible = false;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(372, 392);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(127, 59);
+            this.button11.TabIndex = 38;
+            this.button11.Text = "Добавить пользователя";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(505, 392);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(127, 59);
+            this.button7.TabIndex = 38;
+            this.button7.Text = "Генерация";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 102);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(74, 13);
+            this.label25.TabIndex = 37;
+            this.label25.Text = "Имя сервера";
+            this.label25.Visible = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(210, 144);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(42, 13);
+            this.label26.TabIndex = 36;
+            this.label26.Text = "Домен";
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(183, 211);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(102, 20);
+            this.textBox22.TabIndex = 34;
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new System.Drawing.Point(324, 236);
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new System.Drawing.Size(102, 20);
+            this.textBox23.TabIndex = 33;
+            // 
+            // textBox24
+            // 
+            this.textBox24.Location = new System.Drawing.Point(324, 192);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(102, 20);
+            this.textBox24.TabIndex = 32;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(385, 376);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(201, 13);
+            this.label32.TabIndex = 25;
+            this.label32.Text = "Всего сгенерируется пользователей :";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(209, 195);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(45, 13);
+            this.label27.TabIndex = 25;
+            this.label27.Text = "Пароль";
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(324, 147);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new System.Drawing.Size(102, 20);
+            this.textBox25.TabIndex = 31;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(312, 218);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(149, 13);
+            this.label28.TabIndex = 27;
+            this.label28.Text = "Отчество пользователя(-ей)";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(6, 79);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(102, 20);
+            this.textBox26.TabIndex = 30;
+            this.textBox26.Visible = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(312, 174);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(151, 13);
+            this.label29.TabIndex = 28;
+            this.label29.Text = "Фамилия пользователя(-ей)";
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(6, 118);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(102, 20);
+            this.textBox27.TabIndex = 35;
+            this.textBox27.Visible = false;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(312, 129);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(124, 13);
+            this.label30.TabIndex = 26;
+            this.label30.Text = "Имя пользователя(-ей)";
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(183, 160);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(102, 20);
+            this.textBox28.TabIndex = 29;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(6, 63);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(68, 13);
+            this.label31.TabIndex = 24;
+            this.label31.Text = "Имя группы";
+            this.label31.Visible = false;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 19);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(260, 17);
+            this.checkBox4.TabIndex = 23;
+            this.checkBox4.Text = "Нажми если нужно создать отдельную группу";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.CheckBox4_CheckedChanged);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(6, 392);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(127, 59);
+            this.button18.TabIndex = 38;
+            this.button18.Text = "Проверить что я понаписывал";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(3844, 1063);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox113);
             this.Controls.Add(this.groupBox112);
             this.Controls.Add(this.groupBox111);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -912,6 +1143,8 @@
             this.groupBox113.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -997,6 +1230,27 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.Button button18;
     }
 }
 
