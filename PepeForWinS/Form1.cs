@@ -239,7 +239,7 @@ namespace PepeForWinS
             }
             catch
             {
-                string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"";
+                string zaglyshka = "New-ADOrganizationalUnit -Name:\"" + NAME_GROUP + "\" -Path:\"" + SERVER_DOT_SPLIT + "\" -ProtectedFromAccidentalDeletion:$true -Server:\"" + SERVER_NAME_FULL + "\"\n";
                 string zaglyshka1 = NAME_GROUP?.Length == 0
                     ? "$org=\"" + SERVER_DOT_SPLIT + "\";\n$username=\"" + USER_NAME3 + "\";\n$count=1.." + COUNT + ";\nforeach ($i in $count)\n{{New-AdUser -Name \"" + USER_NAME3 + "$i\" -GivenName \"" + USER_NAME3 + "$i\" -Surname \"" + USER_NAME2 + "$i\" -SamAccountName \"" + USER_NAME + "$i\" -UserPrincipalName \"" + USER_NAME + "$i@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }}"
                     : "$org=\"OU=" + NAME_GROUP + "," + SERVER_DOT_SPLIT + "\"" +
@@ -386,7 +386,7 @@ namespace PepeForWinS
             }
             catch
             {
-                text = "New-GPO -Name \"" + NAME_POLISY + "\" | New-GPLink -Target \"" + SERVER_DOT_SPLIT + "\"\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Policies\\Microsoft\\Windows\\System\" -ValueName DisableCMD -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoRun -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -ValueName DisableRegistryTools -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoControlPanel -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName ScreenSaveActive -Type String -Value 0\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\" -ValueName NoChangingWallPaper -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" - ValueName EnableFirstLogonAnimation  -Type DWord -Value 0";
+                text = "New-GPO -Name \"" + NAME_POLISY + "\" | New-GPLink -Target \"" + SERVER_DOT_SPLIT + "\"\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Policies\\Microsoft\\Windows\\System\" -ValueName DisableCMD -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoRun -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -ValueName DisableRegistryTools -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName NoControlPanel -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\" -ValueName ScreenSaveActive -Type String -Value 0\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\" -ValueName NoChangingWallPaper -Type DWord -Value 1\nSet-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" -ValueName EnableFirstLogonAnimation  -Type DWord -Value 0";
                 using (FileStream fs = File.Create("polisy.ps1"))
                 {
                     Encoding win1251 = Encoding.GetEncoding(1251);
@@ -436,7 +436,7 @@ namespace PepeForWinS
                 if (checkBox8.Checked)
                 { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\" -ValueName NoChangingWallPaper -Type DWord -Value 1\n"; }
                 if (checkBox8.Checked)
-                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" - ValueName EnableFirstLogonAnimation  -Type DWord -Value 0\n"; }
+                { text += "Set-GPRegistryValue -Name \"" + NAME_POLISY + "\" -Key \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" -ValueName EnableFirstLogonAnimation  -Type DWord -Value 0\n"; }
                 using (FileStream fs = File.Create("polisy.ps1"))
                 {
                     Encoding win1251 = Encoding.GetEncoding(1251);

@@ -922,7 +922,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(356, 49);
+            this.checkBox6.Location = new System.Drawing.Point(356, 35);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(276, 17);
             this.checkBox6.TabIndex = 22;
@@ -942,7 +942,7 @@
             // 
             // textBox21
             // 
-            this.textBox21.Location = new System.Drawing.Point(530, 100);
+            this.textBox21.Location = new System.Drawing.Point(530, 94);
             this.textBox21.Name = "textBox21";
             this.textBox21.Size = new System.Drawing.Size(102, 20);
             this.textBox21.TabIndex = 20;
