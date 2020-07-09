@@ -453,9 +453,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(433, 116);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 13);
+            this.label14.Size = new System.Drawing.Size(67, 13);
             this.label14.TabIndex = 27;
-            this.label14.Text = "User name";
+            this.label14.Text = "Name server";
             // 
             // label15
             // 
@@ -472,6 +472,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(102, 20);
             this.textBox7.TabIndex = 25;
+            this.textBox7.Text = "server";
             // 
             // textBox6
             // 
@@ -572,6 +573,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(102, 20);
             this.textBox2.TabIndex = 14;
+            this.textBox2.Text = "24";
             // 
             // textBox1
             // 
@@ -694,6 +696,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 20);
             this.textBox10.TabIndex = 21;
+            this.textBox10.Text = "255.255.255.0";
             // 
             // label3
             // 
@@ -752,6 +755,7 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(100, 20);
             this.textBox13.TabIndex = 14;
+            this.textBox13.Text = "pool1";
             // 
             // groupBox12
             // 
