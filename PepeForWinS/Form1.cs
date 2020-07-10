@@ -20,7 +20,7 @@ namespace PepeForWinS
         {
             InitializeComponent();
             Size = new Size(1075, 550);
-        }//s
+        }
         public int group, chislo, itog, q;
         public string Hydra, NAME_USER, IP_ADDRESS,IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q,NAME_POLISY, text;
         private static readonly string[] Scopes = { DriveService.Scope.Drive };
