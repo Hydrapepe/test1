@@ -11,6 +11,8 @@ using Google.Apis.Util.Store;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using System.Net.Sockets;
+using System.Net;
 
 namespace PepeForWinS
 {
@@ -28,6 +30,23 @@ namespace PepeForWinS
         private const string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
         private const string _fileName = "test";
         private readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                SendMessageFromSocket(11000);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
         private const string _contentType = "application/x-sh";
         //---------------------------------------------------------------------------------------------------
         //Main methods and other
@@ -44,6 +63,8 @@ namespace PepeForWinS
             byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
             return win1251.GetString(win1251Bytes);
         }//generate file
+
+
         private void DebianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             groupBox2.Visible = true;
@@ -582,5 +603,43 @@ namespace PepeForWinS
             DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
             Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='" + IP_ADDRESS + "'\ndomain='" + words[0] + "'\nworkgroup='" + WORKGROUP + "'\nrealm='" + DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install postfix dovecot-dev -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
         }
+        static void SendMessageFromSocket(int port)
+        {
+            // Буфер для входящих данных
+            byte[] bytes = new byte[1024];
+
+            // Соединяемся с удаленным устройством
+
+            // Устанавливаем удаленную точку для сокета
+            String host = Dns.GetHostName();
+            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
+            IPAddress ipAddr = ipHost.AddressList[0];
+            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, port);
+
+            Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+            // Соединяем сокет с удаленной точкой
+            sender.Connect(ipEndPoint);
+
+            Console.Write("Введите сообщение: ");
+
+            string message = host + "\\" + ipAddr;
+
+            Console.WriteLine("Сокет соединяется с {0} ", sender.RemoteEndPoint.ToString());
+            byte[] msg = Encoding.UTF8.GetBytes(message);
+
+            // Отправляем данные через сокет
+            int bytesSent = sender.Send(msg);
+
+            // Получаем ответ от сервера
+            int bytesRec = sender.Receive(bytes);
+
+            Console.WriteLine("\nОтвет от сервера: {0}\n\n", Encoding.UTF8.GetString(bytes, 0, bytesRec));
+            // Освобождаем сокет
+            sender.Shutdown(SocketShutdown.Both);
+            sender.Close();
+        }
+
+
     }
 }
