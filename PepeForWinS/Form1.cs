@@ -24,12 +24,29 @@ namespace PepeForWinS
             Size = new Size(1075, 550);
         }
         public int group, chislo, itog, q;
-        public string Hydra, NAME_USER, IP_ADDRESS,IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q,NAME_POLISY, text;
+        public string Hydra, NAME_USER, IP_ADDRESS,IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q,NAME_POLISY, text,memory, pepememory;
         private static readonly string[] Scopes = { DriveService.Scope.Drive };
         private const string ApplicationName = "PepeSoft";
         private const string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
         private const string _fileName = "test";
         private readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
+        private const string _contentType = "application/x-sh";
+        //---------------------------------------------------------------------------------------------------
+        //Main methods and other
+        //---------------------------------------------------------------------------------------------------
+        private void EXIT(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }//exit
+
+        private static string UTF8ToWin1251(string sourceStr)
+        {
+            Encoding utf8 = Encoding.UTF8;
+            Encoding win1251 = Encoding.GetEncoding("Windows-1251");
+            byte[] utf8Bytes = utf8.GetBytes(sourceStr);
+            byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
+            return win1251.GetString(win1251Bytes);
+        }//generate file
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -45,26 +62,48 @@ namespace PepeForWinS
             {
                 Console.ReadLine();
             }
-        }
+        }//TCP Client
 
-        private const string _contentType = "application/x-sh";
-        //---------------------------------------------------------------------------------------------------
-        //Main methods and other
-        //---------------------------------------------------------------------------------------------------
-        private void EXIT(object sender, EventArgs e)
+        
+
+        static void SendMessageFromSocket(int port)
         {
-            Application.Exit();
-        }//exit
-        private static string UTF8ToWin1251(string sourceStr)
-        {
-            Encoding utf8 = Encoding.UTF8;
-            Encoding win1251 = Encoding.GetEncoding("Windows-1251");
-            byte[] utf8Bytes = utf8.GetBytes(sourceStr);
-            byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
-            return win1251.GetString(win1251Bytes);
-        }//generate file
+            // Буфер для входящих данных
+            byte[] bytes = new byte[1024];
+            //CheckSum
+            string CheckSum = "ONDO";
 
+            // Соединяемся с удаленным устройством
 
+            // Устанавливаем удаленную точку для сокета
+            String host = Dns.GetHostName();
+            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
+            IPAddress ipAddr = ipHost.AddressList[0];
+            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, port);
+
+            Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+            // Соединяем сокет с удаленной точкой
+            sender.Connect(ipEndPoint);
+
+            Console.Write("Введите сообщение: ");
+
+            string message = "1"+ host + "\\" + ipAddr + "\\" + CheckSum;
+
+            Console.WriteLine("Сокет соединяется с {0} ", sender.RemoteEndPoint.ToString());
+            byte[] msg = Encoding.UTF8.GetBytes(message);
+
+            // Отправляем данные через сокет
+            sender.Send(msg);
+
+            // Получаем ответ от сервера
+            int bytesRec = sender.Receive(bytes);
+
+            Console.WriteLine("\nОтвет от сервера: {0}\n\n", Encoding.UTF8.GetString(bytes, 0, bytesRec));
+            // Освобождаем сокет
+            sender.Shutdown(SocketShutdown.Both);
+            sender.Close();
+        }//TCP Sender\Listener
         private void DebianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             groupBox2.Visible = true;
@@ -161,10 +200,20 @@ namespace PepeForWinS
         }//GENERATE GROUP 11 part 3
         private void Button16_Click(object sender, EventArgs e)
         {
+            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
+            IPAddress ipAddr = ipHost.AddressList[0];
+            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, 11000);
+            Socket gooto = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            gooto.Connect(ipEndPoint);
+            string message = "2";
+            byte[] msg = Encoding.UTF8.GetBytes(message);
+            gooto.Send(msg);
+            gooto.Shutdown(SocketShutdown.Both);
+            gooto.Close();
             string Memory = "param ([int] $Stage)\n" +
                 "function one\n" +
                 "{\n" +
-                "$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '"+ Environment.CurrentDirectory + "\\test.ps1 -Stage 2'\n" +
+                "$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '" + Environment.CurrentDirectory + "\\test.ps1 -Stage 2'\n" +
                 "$trigger = New-ScheduledTaskTrigger -AtLogon\n" +
                 "Register-ScheduledTask -Action $action -Trigger $trigger -TaskName \"PEPETEST1\"\n" +
                 "New-NetIPAddress -InterfaceIndex 12 -IPAddress " + IP_SERVER + " –PrefixLength " + MASK + " -DefaultGateway " + GATEWAY + "\n" +
@@ -212,22 +261,22 @@ namespace PepeForWinS
                 "{\n" +
                 "three\n" +
                 "}\n";
-                try
+            try
+            {
+                using (FileStream fs = File.Create("test.ps1"))
                 {
-                    using (FileStream fs = File.Create("test.ps1"))
+                    Encoding win1251 = Encoding.GetEncoding(1251);
+                    string info = UTF8ToWin1251(Memory);
+                    using (var sr = new StreamWriter(fs, win1251))
                     {
-                        Encoding win1251 = Encoding.GetEncoding(1251);
-                        string info = UTF8ToWin1251(Memory);
-                        using (var sr = new StreamWriter(fs, win1251))
-                        {
-                            sr.Write(info);
-                        }
+                        sr.Write(info);
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
             DialogResult = MessageBox.Show("Готово! Скрипты сгенерированы в папке с программой, Спасибо за использование PEPESOFT.");
             Process.Start(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe", "Set-ExecutionPolicy Bypass -Forse");
             Process.Start(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe", " -executionpolicy Bypass -File " + Environment.CurrentDirectory + "\\test.ps1 -Stage 1");
@@ -552,7 +601,7 @@ namespace PepeForWinS
             UserCredential credential = GetUserCredential();
             DriveService service = GetDriveServise(credential);
             UploadFileToDrive(service, _fileName, _filePath, _contentType);
-        }
+        }//create and upload file bash to google drive
         static private DriveService GetDriveServise(UserCredential credential)
         {
             return new DriveService(
@@ -602,44 +651,70 @@ namespace PepeForWinS
             string WORKGROUP = words[0].ToUpper(new CultureInfo("en-US", false));
             DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
             Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='" + IP_ADDRESS + "'\ndomain='" + words[0] + "'\nworkgroup='" + WORKGROUP + "'\nrealm='" + DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install postfix dovecot-dev -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
-        }
-        static void SendMessageFromSocket(int port)
+        }//Bash file internals
+
+        //---------------------------------------------------------------------------------------------------
+        //Admin panel?
+        //---------------------------------------------------------------------------------------------------
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            // Буфер для входящих данных
-            byte[] bytes = new byte[1024];
-
-            // Соединяемся с удаленным устройством
-
-            // Устанавливаем удаленную точку для сокета
-            String host = Dns.GetHostName();
-            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
-            IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, port);
-
-            Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-            // Соединяем сокет с удаленной точкой
-            sender.Connect(ipEndPoint);
-
-            Console.Write("Введите сообщение: ");
-
-            string message = host + "\\" + ipAddr;
-
-            Console.WriteLine("Сокет соединяется с {0} ", sender.RemoteEndPoint.ToString());
-            byte[] msg = Encoding.UTF8.GetBytes(message);
-
-            // Отправляем данные через сокет
-            int bytesSent = sender.Send(msg);
-
-            // Получаем ответ от сервера
-            int bytesRec = sender.Receive(bytes);
-
-            Console.WriteLine("\nОтвет от сервера: {0}\n\n", Encoding.UTF8.GetString(bytes, 0, bytesRec));
-            // Освобождаем сокет
-            sender.Shutdown(SocketShutdown.Both);
-            sender.Close();
-        }
-
+            if (e.KeyCode == Keys.H)
+            {
+                memory += "H";
+            }
+            if (e.KeyCode == Keys.Y)
+            {
+                memory += "Y";
+            }
+            if (e.KeyCode == Keys.D)
+            {
+                memory += "D";
+            }
+            if (e.KeyCode == Keys.R)
+            {
+                memory += "R";
+            }
+            if (e.KeyCode == Keys.A)
+            {
+                memory += "A";
+            }
+            if (e.KeyCode == Keys.OemMinus)
+            {
+                memory += "_";
+            }
+            if (e.KeyCode != Keys.H && e.KeyCode != Keys.Y && e.KeyCode != Keys.D && e.KeyCode != Keys.R && e.KeyCode != Keys.A && e.KeyCode != Keys.OemMinus)
+            {
+                memory = "";
+            }
+            if (memory == "HYDRA_")
+            {
+               pEPEGAToolStripMenuItem.Visible = true;
+            }
+        }//Visible Admin Panel
+        private void PEPEGAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox4.Visible = true;
+            groupBox4.BringToFront();
+            groupBox4.Location = new Point(12, 27);
+        }//Admin panel
+        private void Button28_Click(object sender, EventArgs e)
+        {
+            groupBox41.Visible = true;
+            groupBox41.BringToFront();
+            groupBox41.Location = new Point(200, 27);
+        }//Statistic
+        private void Button26_Click(object sender, EventArgs e)
+        {
+            groupBox42.Visible = true;
+            groupBox42.BringToFront();
+            groupBox42.Location = new Point(200, 27);
+        }//Protected code
+        private void Button29_Click(object sender, EventArgs e)
+        {
+            groupBox43.Visible = true;
+            groupBox43.BringToFront();
+            groupBox43.Location = new Point(200, 27);
+        }//Just pepe shelter
 
     }
 }
