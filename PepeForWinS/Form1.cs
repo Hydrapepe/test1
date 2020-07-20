@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Threading;
 using System.Net.Sockets;
 using System.Net;
+using System.CodeDom;
 
 namespace PepeForWinS
 {
@@ -22,7 +23,7 @@ namespace PepeForWinS
         {
             InitializeComponent();
             Size = new Size(1075, 550);
-        }//
+        }
         public int group, chislo, itog, q;
         public string Hydra, NAME_USER, IP_ADDRESS,IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q,NAME_POLISY, text,memory, pepememory;
         private static readonly string[] Scopes = { DriveService.Scope.Drive };
@@ -31,6 +32,7 @@ namespace PepeForWinS
         private const string _fileName = "test";
         private readonly string _filePath = Directory.GetCurrentDirectory() + @"\Pepe.sh";
         private const string _contentType = "application/x-sh";
+        const string CheckSum = "ONDO";
         //---------------------------------------------------------------------------------------------------
         //Main methods and other
         //---------------------------------------------------------------------------------------------------
@@ -38,7 +40,6 @@ namespace PepeForWinS
         {
             Application.Exit();
         }//exit
-
         private static string UTF8ToWin1251(string sourceStr)
         {
             Encoding utf8 = Encoding.UTF8;
@@ -47,101 +48,90 @@ namespace PepeForWinS
             byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
             return win1251.GetString(win1251Bytes);
         }//generate file
-
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
                 SendMessageFromSocket(11000);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                Console.ReadLine();
-            }
+            catch{}
         }//TCP Client
-
-        
-
-        static void SendMessageFromSocket(int port)
+        private static void SendMessageFromSocket(int port)
         {
             // Буфер для входящих данных
             byte[] bytes = new byte[1024];
-            //CheckSum
-            string CheckSum = "ONDO";
-
             // Соединяемся с удаленным устройством
-
             // Устанавливаем удаленную точку для сокета
-            String host = Dns.GetHostName();
+            string host = Dns.GetHostName();
             IPHostEntry ipHost = Dns.GetHostEntry("localhost");
             IPAddress ipAddr = ipHost.AddressList[0];
             IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, port);
-
             Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
             // Соединяем сокет с удаленной точкой
             sender.Connect(ipEndPoint);
-
-            Console.Write("Введите сообщение: ");
-
             string message = "1"+ host + "\\" + ipAddr + "\\" + CheckSum;
-
-            Console.WriteLine("Сокет соединяется с {0} ", sender.RemoteEndPoint.ToString());
             byte[] msg = Encoding.UTF8.GetBytes(message);
-
             // Отправляем данные через сокет
             sender.Send(msg);
-
-            // Получаем ответ от сервера
-            int bytesRec = sender.Receive(bytes);
-
-            Console.WriteLine("\nОтвет от сервера: {0}\n\n", Encoding.UTF8.GetString(bytes, 0, bytesRec));
             // Освобождаем сокет
             sender.Shutdown(SocketShutdown.Both);
             sender.Close();
         }//TCP Sender\Listener
         private void DebianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            groupBox2.Visible = true;
-            groupBox2.BringToFront();
-            groupBox2.Location = new Point(12, 27);
+            Wwwww(groupBox2);
         }//menu Debian
         private void WindowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            groupBox1.Visible = true;
-            groupBox1.BringToFront();
-            groupBox1.Location = new Point(12, 27);
+            Wwwww(groupBox1);
         }//menu Windows
+        private void Wwww (GroupBox groupBox)
+        {
+            groupBox.Visible = true;
+            groupBox.BringToFront();
+            groupBox.Location = new Point(200, 27);
+        }//right menu
+        private void Wwwww(GroupBox groupBox)
+        {
+            groupBox.Visible = true;
+            groupBox.BringToFront();
+            groupBox.Location = new Point(12, 27);
+        }//left menu
+        private void Stats(string message, int counter = 0)
+        {
+            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
+            IPAddress ipAddr = ipHost.AddressList[0];
+            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, 11000);
+            Socket gooto = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            gooto.Connect(ipEndPoint);
+            if (counter!=0)
+            {
+                message += counter;
+            }
+            else { message += "1";}
+            byte[] msg = Encoding.UTF8.GetBytes(message);
+            gooto.Send(msg);
+            gooto.Shutdown(SocketShutdown.Both);
+            gooto.Close();
+        }//statistic sender
         //---------------------------------------------------------------------------------------------------
         //Group11(Main configurate server)
         //---------------------------------------------------------------------------------------------------
         private void Button6_Click(object sender, EventArgs e)
         {
-            groupBox11.Visible = true;
-            groupBox11.BringToFront();
-            groupBox11.Location = new Point(200, 27);
+            Wwww(groupBox11);
         }//group11
         private void Button15_Click(object sender, EventArgs e)
         {
-            groupBox111.Visible = true;
-            groupBox111.BringToFront();
-            groupBox111.Location = new Point (200, 27);
+            Wwww(groupBox111);
         }//group111
         private void Button13_Click(object sender, EventArgs e)
         {
-            groupBox112.BringToFront();
-            groupBox112.Visible = true;
-            groupBox112.Location = new Point(200, 27);
+            Wwww(groupBox112);
         }//group112
         private void Button14_Click(object sender, EventArgs e)
         {
-            groupBox113.BringToFront();
-            groupBox113.Visible = true;
-            groupBox113.Location = new Point(200, 27);
+            Wwww(groupBox113);
         }//group113
         private void Button19_Click(object sender, EventArgs e)
         {
@@ -200,16 +190,7 @@ namespace PepeForWinS
         }//GENERATE GROUP 11 part 3
         private void Button16_Click(object sender, EventArgs e)
         {
-            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
-            IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, 11000);
-            Socket gooto = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            gooto.Connect(ipEndPoint);
-            string message = "2";
-            byte[] msg = Encoding.UTF8.GetBytes(message);
-            gooto.Send(msg);
-            gooto.Shutdown(SocketShutdown.Both);
-            gooto.Close();
+            Stats("2");
             string Memory = "param ([int] $Stage)\n" +
                 "function one\n" +
                 "{\n" +
@@ -281,20 +262,12 @@ namespace PepeForWinS
             Process.Start(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe", "Set-ExecutionPolicy Bypass -Forse");
             Process.Start(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe", " -executionpolicy Bypass -File " + Environment.CurrentDirectory + "\\test.ps1 -Stage 1");
         }//GENERATE GROUP 11 part ALL
-        private void BACK1(object sender, EventArgs e)
-        {
-            groupBox11.Visible = true;
-            groupBox11.BringToFront();
-            groupBox11.Location = new Point(200, 27);
-        }//Back group 11
         //---------------------------------------------------------------------------------------------------
         //Group12(Configurate User(Many))
         //---------------------------------------------------------------------------------------------------
         private void Button8_Click(object sender, EventArgs e)
         {
-            groupBox12.Visible = true;
-            groupBox12.BringToFront();
-            groupBox12.Location = new Point(200, 27);
+            Wwww(groupBox12);
         }//group12
         private void CheckBox5_CheckedChanged(object sender, EventArgs e)
         {
@@ -331,6 +304,7 @@ namespace PepeForWinS
         }//how many user generate
         private void Button2_Click(object sender, EventArgs e)
         {
+            Stats("3", Convert.ToInt32(COUNT));
             DOMAIN_NAME_FULL = textBox20.Text;
             NAME_GROUP = textBox18.Text;
             SERVER_NAME_FULL = textBox19.Text + "." + DOMAIN_NAME_FULL;
@@ -387,9 +361,7 @@ namespace PepeForWinS
         //---------------------------------------------------------------------------------------------------
         private void Button9_Click(object sender, EventArgs e)
         {
-            groupBox13.Visible = true;
-            groupBox13.BringToFront();
-            groupBox13.Location = new Point(200, 27);
+            Wwww(groupBox13);
             q = 1;
         }//group13
         private void CheckBox4_CheckedChanged(object sender, EventArgs e)
@@ -451,11 +423,12 @@ namespace PepeForWinS
                       "\nforeach ($i in $count)\n{New-AdUser -Name \"" + USER_NAME3 + "\" -GivenName \"" + USER_NAME3 + "\" -Surname \"" + USER_NAME2 + "\" -SamAccountName \"" + USER_NAME + "\" -UserPrincipalName \"" + USER_NAME + "@" + DOMAIN_NAME_FULL + "\" -Path $org -Enabled $True -ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString \"" + PASSWORD + "\" -AsPlainText -force) -passThru }\n";
             }
             textBox28.Text = textBox26.Text = textBox27.Text = textBox25.Text = textBox24.Text = textBox23.Text = textBox22.Text = PASSWORD = USER_NAME3= USER_NAME2=USER_NAME= SERVER_NAME_FULL= DOMAIN_NAME_FULL="";
-            label32.Text= "Всего сгенерируется пользователей :"+q++;
+            label32.Text= "Всего сгенерируется пользователей: "+q++;
             checkBox7.Visible = true;
         }//memory user
         public void Button7_Click(object sender, EventArgs e)
         {
+            Stats("3", Convert.ToInt32(q));
             string zaglyshkaqq= zaglyshkaq + zaglyshka1q;
             try
             {
@@ -476,9 +449,7 @@ namespace PepeForWinS
         //---------------------------------------------------------------------------------------------------
         private void Button10_Click(object sender, EventArgs e)
         {
-            groupBox14.Visible = true;
-            groupBox14.BringToFront();
-            groupBox14.Location = new Point(200, 27);
+            Wwww(groupBox14);
         }//group14
         private void Button21_Click(object sender, EventArgs e)
         {
@@ -518,6 +489,7 @@ namespace PepeForWinS
         }//using all GPO
         private void Button20_Click(object sender, EventArgs e)
         {
+            Stats("4");
             DOMAIN_NAME_FULL = textBox29.Text;
             NAME_POLISY = textBox31.Text;
             NAME_GROUP = textBox30.Text;
@@ -566,24 +538,23 @@ namespace PepeForWinS
                 }
             }
         }//using selective GPO
-         //---------------------------------------------------------------------------------------------------
-         //Group15(Install application)
-         //---------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------
+        //Group15(Install application)
+        //---------------------------------------------------------------------------------------------------
 
         //---------------------------------------------------------------------------------------------------
         //Group21(Install Samba & etc)
         //---------------------------------------------------------------------------------------------------
         private void Button24_Click(object sender, EventArgs e)
         {
-            groupBox21.Visible = true;
-            groupBox21.BringToFront();
-            groupBox21.Location = new Point(200, 27);
+            Wwww(groupBox21);
         }//group21
         private void Button27_Click(object sender, EventArgs e)
         {
+            Stats("2");
             try
             {
-                using (FileStream fs = System.IO.File.Create("Pepe.sh"))
+                using (FileStream fs = File.Create("Pepe.sh"))
                 {
                     Pepegoto();
                     Encoding win1251 = Encoding.GetEncoding(1251);
@@ -652,7 +623,6 @@ namespace PepeForWinS
             DOMAIN_NAME_FULL = DOMAIN_NAME_FULL.ToUpper(new CultureInfo("en-US", false));
             Hydra = "#!/bin/bash\nadusername='" + NAME_USER + "'\nip='" + IP_ADDRESS + "'\ndomain='" + words[0] + "'\nworkgroup='" + WORKGROUP + "'\nrealm='" + DOMAIN_NAME_FULL + "'\napt update\napt install net-tools -y\napt install postfix dovecot-dev -y\napt install krb5-user samba winbind -y\nrm -rf /etc/resolv.conf\necho -e \"domain $domain\\nsearch $domain\\nnameserver $ip\" > /etc/resolv.conf\nsed - i 's/WORKGROUP/'$workgroup'/' / etc / samba / smb.conf\nsed -i '/Networking/a realm = '$realm'' /etc/samba/smb.conf\nsed -i 's/standalone server/member server/' /etc/samba/smb.conf\necho '**************************************'\necho 'Vvedite parol ot uchetki Active Directory'\necho '**************************************'\nnet ads join -U $adusername -D $realm\necho ''\necho '**************************************'\necho 'Informaciya o Domene'\necho '**************************************'\nnet ads info";
         }//Bash file internals
-
         //---------------------------------------------------------------------------------------------------
         //Admin panel?
         //---------------------------------------------------------------------------------------------------
@@ -693,28 +663,37 @@ namespace PepeForWinS
         }//Visible Admin Panel
         private void PEPEGAToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            groupBox4.Visible = true;
-            groupBox4.BringToFront();
-            groupBox4.Location = new Point(12, 27);
+            Wwwww(groupBox4);
         }//Admin panel
         private void Button28_Click(object sender, EventArgs e)
         {
-            groupBox41.Visible = true;
-            groupBox41.BringToFront();
-            groupBox41.Location = new Point(200, 27);
+            Wwww(groupBox41);
+            string data = null;
+            byte[] bytes = new byte[1024];
+            IPHostEntry ipHost = Dns.GetHostEntry("localhost");
+            IPAddress ipAddr = ipHost.AddressList[0];
+            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, 11000);
+            Socket gooto = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            gooto.Connect(ipEndPoint);
+            byte[] msg = Encoding.UTF8.GetBytes("0");
+            gooto.Send(msg);
+            int bytesRec = gooto.Receive(bytes);
+            data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
+            gooto.Shutdown(SocketShutdown.Both);
+            gooto.Close();
+            string[] words = data.Split(new char[] { '\\' });
+            label45.Text = words[0];
+            label46.Text = words[1];
+            label47.Text = words[2];
         }//Statistic
         private void Button26_Click(object sender, EventArgs e)
         {
-            groupBox42.Visible = true;
-            groupBox42.BringToFront();
-            groupBox42.Location = new Point(200, 27);
+            Wwww(groupBox42);
+            label41.Text = CheckSum;
         }//Protected code
         private void Button29_Click(object sender, EventArgs e)
         {
-            groupBox43.Visible = true;
-            groupBox43.BringToFront();
-            groupBox43.Location = new Point(200, 27);
+            Wwww(groupBox43);
         }//Just pepe shelter
-
     }
 }
