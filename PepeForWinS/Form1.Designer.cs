@@ -29,14 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linuxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,8 +172,14 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox112.SuspendLayout();
@@ -197,91 +195,9 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox41.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(34, 294);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(112, 119);
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button22);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(182, 457);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Visible = false;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(7, 419);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(169, 32);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "Выход";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.EXIT);
-            // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(6, 216);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(169, 43);
-            this.button22.TabIndex = 0;
-            this.button22.Text = "Устанока ПО";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(7, 167);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(169, 43);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "Настройка групповых политик";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.Button10_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(7, 118);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(169, 43);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "Создание пользователей (уникальное)";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.Button9_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(7, 69);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(169, 43);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Создание пользователей(массовое)";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(7, 20);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(169, 43);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Базовая настройка сервера";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // menuStrip1
             // 
@@ -1662,7 +1578,8 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(120, 123);
+            this.label40.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label40.Location = new System.Drawing.Point(125, 123);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(41, 13);
             this.label40.TabIndex = 3;
@@ -1685,6 +1602,90 @@
             this.label42.Size = new System.Drawing.Size(97, 13);
             this.label42.TabIndex = 3;
             this.label42.Text = "Текущая ревизия";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(34, 294);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(112, 119);
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(7, 20);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(169, 43);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "Базовая настройка сервера";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(7, 69);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(169, 43);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "Создание пользователей(массовое)";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(7, 118);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(169, 43);
+            this.button9.TabIndex = 0;
+            this.button9.Text = "Создание пользователей (уникальное)";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(7, 167);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(169, 43);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "Настройка групповых политик";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Button10_Click);
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(6, 216);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(169, 43);
+            this.button22.TabIndex = 0;
+            this.button22.Text = "Устанока ПО";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(7, 419);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(169, 32);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "Выход";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.EXIT);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button22);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.pictureBox3);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(182, 457);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
             // 
             // Form1
             // 
@@ -1714,8 +1715,6 @@
             this.Text = "PEPESOFT";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -1742,18 +1741,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox41.ResumeLayout(false);
             this.groupBox41.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem linuxToolStripMenuItem;
@@ -1789,7 +1784,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox112;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1864,7 +1858,6 @@
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.CheckBox checkBox14;
-        private System.Windows.Forms.Button button22;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1899,6 +1892,14 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

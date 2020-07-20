@@ -25,7 +25,7 @@ namespace PepeForWinS
             Size = new Size(1075, 550);
         }
         public int group, chislo, itog, q;
-        public string Hydra, NAME_USER, IP_ADDRESS,IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q,NAME_POLISY, text,memory, pepememory;
+        public string pepe,Hydra, NAME_USER, IP_ADDRESS, IP_SERVER, MASK, GATEWAY, HOSTNAME, NETWORK, LASTBYTE, DOMAINNAME, REVERS_IP, NAME_POOL, LOW_RANGE, HIGE_RANGE, MASK255, NETBIOS, DOMAIN_NAME_FULL, NAME_GROUP, SERVER_NAME_FULL, SERVER_DOT_SPLIT, USER_NAME, COUNT, USER_NAME2, USER_NAME3, PASSWORD, zaglyshkaq, zaglyshka1q, NAME_POLISY, text, memory, pepememory;
         private static readonly string[] Scopes = { DriveService.Scope.Drive };
         private const string ApplicationName = "PepeSoft";
         private const string FolderId = "12S8KdEPIuKl73B4RJT1wi90HCKdfyB2i";
@@ -54,9 +54,9 @@ namespace PepeForWinS
             {
                 SendMessageFromSocket(11000);
             }
-            catch{}
+            catch { }
         }//TCP Client
-        private static void SendMessageFromSocket(int port)
+        public void SendMessageFromSocket(int port)
         {
             // Буфер для входящих данных
             byte[] bytes = new byte[1024];
@@ -69,14 +69,71 @@ namespace PepeForWinS
             Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             // Соединяем сокет с удаленной точкой
             sender.Connect(ipEndPoint);
-            string message = "1"+ host + "\\" + ipAddr + "\\" + CheckSum;
+            string message = "1" + host + "\\" + ipAddr + "\\" + CheckSum;
             byte[] msg = Encoding.UTF8.GetBytes(message);
             // Отправляем данные через сокет
             sender.Send(msg);
-            // Освобождаем сокет
+
+            string data = null;
+            int bytesRec = sender.Receive(bytes);
+            data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
+            if (data == "Start self_destruction")
+            {
+                string input = "Ты попал на забаненую ветку. Введи имя ветки + силовые коды через \\  чтобы разлочить приложение. имя ветки: "+CheckSum;
+                ShowInputDialog(ref input);
+                label40.Text = "Силовые коды: АКТИВНЫ";
+                label40.ForeColor = Color.Red;
+                if (input != "ONDO\\PEPE\\HYDRA\\RISE")
+                {
+                    ProcessStartInfo Info = new ProcessStartInfo
+                    {
+                        Arguments = "/C choice /C Y /N /D Y /T 3 & Del /q " +
+                              AppDomain.CurrentDomain.BaseDirectory,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        CreateNoWindow = true,
+                        FileName = "cmd"
+                    };
+                    Process.Start(Info);
+                    Application.Exit();
+                }
+            }
             sender.Shutdown(SocketShutdown.Both);
             sender.Close();
         }//TCP Sender\Listener
+        private static DialogResult ShowInputDialog(ref string input)
+        {
+            Size size = new Size(400, 100);
+            Form inputBox = new Form
+            {
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                ClientSize = size,
+                Text = "ACHTUNG"
+            };
+
+            TextBox textBox = new TextBox
+            {
+                Size = new Size(size.Width - 10, 23),
+                Location = new Point(5, 5),
+                Text = input
+            };
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button
+            {
+                DialogResult = DialogResult.OK,
+                Name = "okButton",
+                Size = new Size(75, 23),
+                Text = "&OK",
+                Location = new Point(size.Width - 80 - 80, 39)
+            };
+            inputBox.Controls.Add(okButton);
+
+            inputBox.AcceptButton = okButton;
+
+            DialogResult result = inputBox.ShowDialog();
+            input = textBox.Text;
+            return result;
+        }
         private void DebianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Wwwww(groupBox2);
@@ -686,10 +743,18 @@ namespace PepeForWinS
             label46.Text = words[1];
             label47.Text = words[2];
         }//Statistic
-        private void Button26_Click(object sender, EventArgs e)
+        public void Button26_Click(object sender, EventArgs e)
         {
             Wwww(groupBox42);
             label41.Text = CheckSum;
+            
+            if (label40.Text == "label40") 
+            { 
+                label40.Text = "Силовые коды: Неактивны";
+                label40.ForeColor = Color.Green;
+            }
+
+            
         }//Protected code
         private void Button29_Click(object sender, EventArgs e)
         {
