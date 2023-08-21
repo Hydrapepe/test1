@@ -1,4 +1,4 @@
-### PepeSoft For Windows Server 20xx and Linux Debian using Google API
+### PepeSoft For Windows Server 20xx and Linux Debian using Google APIs
 ## Features Windows Server 20XX
 * Configure AD
 * Configure DHCP
